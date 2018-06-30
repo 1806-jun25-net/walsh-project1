@@ -26,7 +26,38 @@ namespace PizzaProject.UI
                 
         }
 
-        // get user input 
+        // get user input and call relevant logic
+        public void UserInput(int choice )
+        {
+            switch (choice)
+            {
+                case 1:
+                    Console.WriteLine("1\n");
+                    break;
+                case 2:
+                    Console.WriteLine("2\n");
+                    break;
+                case 3:
+                    Console.WriteLine("3\n");
+                    break;
+                case 4:
+                    Console.WriteLine("4\n");
+                    break;
+                case 5:
+                    Console.WriteLine("5\n");
+                    break;
+                case 6:
+                    Console.WriteLine("6\n");
+                    break;
+                case 7:
+                    Console.WriteLine("7\n");
+                    break;
+                case 8:
+                    Console.WriteLine("8\n");
+                    Console.WriteLine("Program will now exit!");
+                    break;
+            }
+        }
 
         
     }
