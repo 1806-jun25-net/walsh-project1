@@ -22,6 +22,7 @@ namespace PizzaProject.UI
 
             Console.WriteLine("7. Save all data to XML");
             Console.WriteLine("8. Load data from disk");
+            Console.WriteLine("9. Exit");
                 
         }
 
