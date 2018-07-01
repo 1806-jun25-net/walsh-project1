@@ -7,23 +7,8 @@ public class User
     private string LastName { set; get; }
     private string PhoneNumber { set; get; }
     private string DefaultLocation { set; get; }
-    private bool OrderAllowed = true;
-    private DateTime OrderTime
-    {
-        set => value = DateTime.Now;
 
-        get => OrderTime;
-    }
-
-    private List<List<string>> OrderHistory;
-
-   
-	
-
-	
-	
-
-
-
+    private SortedSet<DateTime> OrderTimes { set; get; }
+    private List<List<string>> OrderHistory { get; set; }
 }
 
