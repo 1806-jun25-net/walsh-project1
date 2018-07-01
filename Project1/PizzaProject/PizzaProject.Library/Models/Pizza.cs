@@ -6,6 +6,14 @@ namespace PizzaProject.Library.Models
 {
     public class Pizza
     {
-        // stuff
+        // toppings
+        private List<string> Toppings { get; set; }
+        private string Crust { get; set; }
+
+
+
+        
+
     }
 }
+  
