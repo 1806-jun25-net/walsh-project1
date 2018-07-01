@@ -12,9 +12,9 @@ public class Location
 	private Dictionary<string, int> Inventory { get; set; }
 	
     
-	// class methods 
-    /*
-	public bool CheckInventory(Order order);
-    public void UseInventory(Order order); 
+	// class methods
+	/*
+     public bool CheckInventory(Order order);
+     public void UseInventory(Order order); 
 	*/
 }
