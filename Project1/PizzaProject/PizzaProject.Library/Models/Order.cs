@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PizzaProject.Library.Models
 {
-    public class Order : User, IAddress;
+    public class Order : User, IAddress
     {
         string IAddress.Street { get; set; }
         string IAddress.City { get; set; }
