@@ -1,11 +1,12 @@
 ﻿using PizzaProject.Library.Interfaces;
+using PizzaProject.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace PizzaProject.Library.Models
 {
-    public class Order : IAddress 
+    public class Order : User, IAddress;
     {
         string IAddress.Street { get; set; }
         string IAddress.City { get; set; }
@@ -14,6 +15,8 @@ namespace PizzaProject.Library.Models
         public DateTime OrderTime { get; set; }
         public int Quantity { get; set; }          // can't be less than zero or more than 12
         public int Cost { get; set; }              // can't exceed $500
+
+       
 
     }
 }

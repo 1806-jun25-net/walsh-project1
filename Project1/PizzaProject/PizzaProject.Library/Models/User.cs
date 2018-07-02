@@ -1,9 +1,12 @@
+using PizzaProject.Library.Interfaces;
 using PizzaProject.Library.Models;
+
 using System;
 using System.Collections.Generic;
 
-public class User
+public class User 
 {
+    
     public string FirstName { set; get; }
     public string LastName { set; get; }
     public string PhoneNumber { set; get; }
