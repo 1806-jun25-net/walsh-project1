@@ -32,7 +32,7 @@ namespace PizzaProject.UI
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("Calling place order in User Clas");
+                    Console.WriteLine("1\n");
                     break;
                 case 2:
                     Console.WriteLine("2\n");
