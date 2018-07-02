@@ -62,6 +62,41 @@ namespace PizzaProject.UI
             }
         }
 
-        
+        public void PlaceOrder( )
+        {
+            Console.WriteLine("Are  you a new or returning customer? Press Y for yes, N for no...");
+
+            // input validation
+
+            var input = Console.ReadLine();
+            input = input.ToLower();
+
+            while(input != "y" || input != "n")
+            {
+                Console.WriteLine("Error: You didn't enter a valid value.");
+                Console.WriteLine("Please enter a 'y', 'Y', 'n', 'N'");
+
+                input = Console.ReadLine();
+                input = input.ToLower();
+            }
+
+            // input is valid create new user and get address
+            if(input == "y")
+            {
+
+                Console.WriteLine("Thank you for choosing Pizza Pizza!");
+                Console.Write("What is your first name: ");
+                Console.ReadLine();
+
+
+
+
+
+
+
+            }
+        }
+
+
     }
 }
