@@ -6,9 +6,16 @@ namespace PizzaProject.Library.Models
 {
     public class Pizza
     {
-        
-        private List<string> Toppings { get; set; }
-        private string Crust { get; set; }
+        /*
+         * Toppings: Pepperoni, Sauce, Cheese, Chicken, Sausage, Peppers, Onions
+         *           Jalapenos.
+         *           
+         * Crust: Small, Medium Large
+         */
+
+        public List<string> Toppings { get; set; }
+        public string Crust { get; set; }
+
     }
 }
   
