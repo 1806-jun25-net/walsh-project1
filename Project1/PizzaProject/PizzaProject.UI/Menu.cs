@@ -54,6 +54,9 @@ namespace PizzaProject.UI
                     break;
                 case 8:
                     Console.WriteLine("8\n");
+                    break;
+                case 9:
+                    Console.WriteLine("9\n");
                     Console.WriteLine("Program will now exit!");
                     break;
             }

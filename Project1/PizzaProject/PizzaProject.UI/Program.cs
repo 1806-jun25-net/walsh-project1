@@ -21,6 +21,8 @@ namespace PizzaProject.UI
                 Console.WriteLine("Enter a command to choose menu or type 'exit' to quit...");
                 input = int.Parse(Console.ReadLine());
 
+                // validate input 
+
                 menu.UserInput(input);
 
 
