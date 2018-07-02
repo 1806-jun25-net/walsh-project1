@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 public class User
 {
-    private string FirstName { set; get; }
-    private string LastName { set; get; }
-    private string PhoneNumber { set; get; }
-    private string DefaultLocation { set; get; }
+    public string FirstName { set; get; }
+    public string LastName { set; get; }
+    public string PhoneNumber { set; get; }
+    public string DefaultLocation { set; get; }
 
-    private SortedSet<DateTime> OrderTimes { set; get; }
-    private List<List<string>> OrderHistory { get; set; }
+    public SortedSet<DateTime> OrderTimes { set; get; }
+    public List<List<string>> OrderHistory { get; set; }
 }
 
