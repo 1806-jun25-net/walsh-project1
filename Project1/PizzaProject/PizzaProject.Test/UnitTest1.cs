@@ -1,3 +1,4 @@
+using PizzaProject.Library.Models;
 using System;
 using Xunit;
 
@@ -8,7 +9,7 @@ namespace PizzaProject.Test
         [Fact]
         public void Test1()
         {
-
+            Pizza
         }
     }
 }
