@@ -13,11 +13,11 @@ namespace PizzaProject.UI
             // create menu object and display menu options
             Menu menu = new Menu();
             menu.ShowMenu();
-            
+
             // do user choice until they want to exit 
             do
             {
-                
+
                 Console.WriteLine("Enter a command to choose menu or type 'exit' to quit...");
                 input = int.Parse(Console.ReadLine());
 
@@ -28,19 +28,9 @@ namespace PizzaProject.UI
 
             } while(input != 8);
 
-              
-
-
-
-
-
-
-
-
-            
-            
-
             
         }
+
+        
     }
 }
