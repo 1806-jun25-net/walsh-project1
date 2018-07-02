@@ -7,13 +7,13 @@ namespace PizzaProject.Library.Models
 {
     class Order : IAddress 
     {
-        string IAddress.Street { get; set; }
-        string IAddress.City { get; set; }
-        string IAddress.State { get; set; }
-        string IAddress.ZipCode { get; set; }
-        private DateTime OrderTime { get; set; }
-        private int Quantity { get; set; }          // can't be less than zero or more than 12
-        private int Cost { get; set; }              // can't exceed $500
+        public string IAddress.Street { get; set; }
+        public string IAddress.City { get; set; }
+        public string IAddress.State { get; set; }
+        public string IAddress.ZipCode { get; set; }
+        public DateTime OrderTime { get; set; }
+        public int Quantity { get; set; }          // can't be less than zero or more than 12
+        public int Cost { get; set; }              // can't exceed $500
 
     }
 }
