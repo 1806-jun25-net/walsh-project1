@@ -85,17 +85,7 @@ namespace PizzaProject.UI
             }
         }
 
-        // used to validate y for yes or n for no
-        static void ValidateCharInput(char c)
-        {
-            Console.WriteLine("Please select: y/n?");
-            char input = Console.ReadKey().KeyChar;
-            if(input == 'y')
-            {
-                Console.WriteLine("Input is: {0}", input);
-            }
-
-        }
+       
 
     }
 }
