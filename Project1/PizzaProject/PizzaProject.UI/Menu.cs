@@ -32,7 +32,8 @@ namespace PizzaProject.UI
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("1\n");
+                    Console.WriteLine("Call Create user");
+                    PlaceOrder();
                     break;
                 case 2:
                     Console.WriteLine("2\n");
@@ -62,7 +63,7 @@ namespace PizzaProject.UI
             }
         }
 
-        public void PlaceOrder( )
+        static void PlaceOrder( )
         {
             Console.WriteLine("Are  you a new or returning customer? Press Y for yes, N for no...");
 
@@ -86,17 +87,7 @@ namespace PizzaProject.UI
 
                 Console.WriteLine("Thank you for choosing Pizza Pizza!");
                 Console.Write("What is your first name: ");
-                Console.ReadLine();
-
-
-
-
-
-
-
             }
         }
-
-
     }
 }

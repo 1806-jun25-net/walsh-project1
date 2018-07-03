@@ -9,7 +9,7 @@ namespace PizzaProject.Test
         [Fact]
         public void Test1()
         {
-            Pizza
+           
         }
     }
 }

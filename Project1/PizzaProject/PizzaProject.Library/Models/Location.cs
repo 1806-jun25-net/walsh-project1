@@ -1,3 +1,4 @@
+using PizzaProject.Library.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ public class Location
 	private List<List<string>> OrderHistory { get; set; }
 	private Dictionary<string, int> Inventory { get; set; }
 	
-    
+    Order
 	// class methods
 	/*
      public bool CheckInventory(Order order);
