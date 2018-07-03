@@ -4,11 +4,11 @@ using System.Text;
 
 namespace PizzaProject.UI
 {
-    public class Menu
+    public static class Menu
     {
         
         // display menu
-        public void ShowMenu()
+        public static void ShowMenu()
         {
             Console.WriteLine("Welcome to Pizza Pizza!\n");
             Console.WriteLine("1: Place Order");
@@ -27,12 +27,12 @@ namespace PizzaProject.UI
         }
 
         // get user input and call relevant logic
-        public void UserInput(int choice )
+        public static void UserInput(int choice )
         {
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("Call Create user");
+                    // call create user
                     PlaceOrder();
                     break;
                 case 2:
@@ -63,7 +63,7 @@ namespace PizzaProject.UI
             }
         }
 
-        static void PlaceOrder( )
+        public static void PlaceOrder( )
         {
             Console.WriteLine("Are  you a new or returning customer? Press Y for yes, N for no...");
 

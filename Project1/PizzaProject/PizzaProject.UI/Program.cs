@@ -14,14 +14,16 @@ namespace PizzaProject.UI
             do
             {
                 // display menu option 
-                ShowMenu();
+                Menu.ShowMenu();
 
                 // get user input
                 Console.WriteLine("Enter a command to choose menu or type 'exit' to quit...");
                 input = int.Parse(Console.ReadLine());
 
+                // validate input
+                // ValidateCharInput()
                 // call relevant logic
-                UserInput(input);
+                Menu.UserInput(input);
 
                 
 
@@ -83,8 +85,15 @@ namespace PizzaProject.UI
             }
         }
 
+        // used to validate y for yes or n for no
         static void ValidateCharInput(char c)
         {
+            Console.WriteLine("Please select: y/n?");
+            char input = Console.ReadKey().KeyChar;
+            if(input == 'y')
+            {
+                Console.WriteLine("Input is: {0}", input);
+            }
 
         }
 
