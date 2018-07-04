@@ -115,6 +115,11 @@ namespace PizzaProject.UI
             Console.Write("What is your phone number:  ");
             var phoneNumber = Console.ReadLine();
 
+            Console.Write("What location do you want to choose location 1 or 2:  ");
+            var location = Console.ReadLine();
+
+            
+
 
 
         }
