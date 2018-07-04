@@ -124,11 +124,9 @@ namespace PizzaProject.UI
             if ( locationNumber == 1 )
                 locationName = "Location 1";
             else
-                locationName = "Location 2";
+               locationName = "Location 2";
+
             
-
-          
-
         }
     }   
 }

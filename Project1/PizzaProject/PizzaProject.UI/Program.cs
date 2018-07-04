@@ -1,13 +1,15 @@
-﻿using System;
+﻿
+
+using System;
 
 
 namespace PizzaProject.UI
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-
+           
             int input;      // stores user menu choice 
 
             // do user choice until they want to exit 

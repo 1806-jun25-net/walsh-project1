@@ -25,7 +25,7 @@ namespace PizzaProject.Library.Models
         public static int MediumCrust { get; set; }
         public static int LargeCrust { get; set; }
 
-        // take order value and check if there are enough inventory items to make order. 
+        /*take order value and check if there are enough inventory items to make order. 
         public Location1( Order order )
         {
             // check all items if there are enough
@@ -33,7 +33,7 @@ namespace PizzaProject.Library.Models
 
 
         }
-
+        */
 
 
         // public bool CheckInventory(Order order);
