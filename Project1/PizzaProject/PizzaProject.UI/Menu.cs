@@ -70,8 +70,11 @@ namespace PizzaProject.UI
             // input validation. 
             var input = ValidateInput();
 
-            // test if input is correct 
-            Console.WriteLine("\nThis was the input: " + input);
+            // if user inputs y for new customer, 
+            if (input == "y")
+            {
+
+            }
 
         }
 
