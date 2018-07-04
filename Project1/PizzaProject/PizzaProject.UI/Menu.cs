@@ -73,7 +73,8 @@ namespace PizzaProject.UI
             // if user inputs y for new customer, 
             if (input == "y")
             {
-               // get 
+                // ask user for information to make a new customer
+                GetCustomerInformation();
             }
 
         }
@@ -100,6 +101,22 @@ namespace PizzaProject.UI
             return input;
         }
 
-        stati
+        static void GetCustomerInformation()
+        {
+            // test
+            Console.WriteLine("Welcome new customer! Let's get some new info...");
+
+            Console.Write("What is your first name:  ");
+            var firstName = Console.ReadLine();
+
+            Console.Write("What is your last name:  ");
+            var lastName = Console.ReadLine();
+
+            Console.Write("What is your phone number:  ");
+            var phoneNumber = Console.ReadLine();
+
+
+
+        }
     }   
 }
