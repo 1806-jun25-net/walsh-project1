@@ -8,13 +8,9 @@ namespace PizzaProject.Library.Models
 {
     public class Order 
     {
-        public string StoreName { get; set; }
-        public string Street { get; set; }
-        public string City { get; set;  }
-        public string State { get; set; }
-        public string Zip { get; set; }
+        public string LocationName { get; set; }
         public DateTime OrderTime { get; set; }
-        public int Quantity { get; set; }          // can't be less than zero or more than 12
+        public int NumberOfPizzas { get; set; }          // can't be less than zero or more than 12
         public int Cost { get; set; }              // can't exceed $500
 
        
