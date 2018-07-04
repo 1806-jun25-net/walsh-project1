@@ -27,9 +27,6 @@ namespace PizzaProject.UI
                 // call relevant logic
                 Menu.UserInput(input);
 
-
-
-
             } while(input != 9);
 
         }
