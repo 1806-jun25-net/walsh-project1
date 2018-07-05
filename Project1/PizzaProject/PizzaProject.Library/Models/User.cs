@@ -11,13 +11,19 @@ public class User
     public string LastName { set; get; }
     public string PhoneNumber { set; get; }
     public string DefaultLocation { set; get; }
-    public DateTime OrderTime { set; get; }
+    public DateTime OrderTime { set; get; } 
     public bool AlreadyOrdered { set; get; } = false;
     public List<Pizza> PizzasOrdered { set; get;  }
 
 
     public SortedSet<DateTime> OrderTimes { set; get; }
     public List<List<string>> OrderHistory { get; set; }
+
+    // default constructer
+    public User()
+    {
+
+    }
 
     // enter user first name last name and phone number
     public User( string firstName, string lastName, string phoneNumber )

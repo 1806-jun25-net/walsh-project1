@@ -1,18 +1,15 @@
-﻿using PizzaProject.Library;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
 namespace PizzaProject.Test
 {
-    
-    public class UserTest
+    public class Test
     {
         // Test blank constructor
         [Fact]
-        public void CustomerInfoWithFirstnameLastnamePhonenumber()
+        public void CustomerInfoWithFirstnameLastnamePhonenumber( )
         {
             // arrange 
             string firstName = "Davy";
@@ -21,7 +18,7 @@ namespace PizzaProject.Test
             User customer = new User(firstName, lastName, phoneNumber);
 
             User expected = customer;
-            
+
 
             // act
             User actual = new User();
@@ -34,4 +31,5 @@ namespace PizzaProject.Test
 
         }
     }
+
 }
