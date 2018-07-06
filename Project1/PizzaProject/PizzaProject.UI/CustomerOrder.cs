@@ -55,26 +55,25 @@ namespace PizzaProject.UI
         // prompt user for pizza crust and topping information
         public static void GetPizzaInfo(User user)
         {
-
-
-
             // integer validation
             int number = ValidateNumberOfPizzas();
 
-            // test 
+            
 
 
             Console.WriteLine(number);
 
-            for(int i = 0; i < number; ++number)
+            for(int i = 1; i <= number; i++)
             {
-                var size = ValidateCrustSize();
+                // Get pizza crust size
+                var size = ValidateCrustSize(i);
+                Console.WriteLine();            // skip line
 
                 // store toppings. all pizzas have sauce and cheese
                 List<string> toppings = new List<string>() { "sauce", "cheese" };
 
                 // Get toppings. Add pepperoni and sausage to toppings list if user requests
-                Console.WriteLine("Tell me which toppings you would like.");
+                Console.WriteLine($"For pizza #{i} Tell me which toppings you would like.");
                 Console.WriteLine("Our toppings include Pepperoni, Sauce, Cheese and Sausage.");
                 Console.WriteLine("All pizzas come with sauce and cheese. Would you like to add pepperoni? (Y or N) ");
 
@@ -94,22 +93,13 @@ namespace PizzaProject.UI
                 {
                     Console.Write(value + " ");
                 }
-                Console.WriteLine();        // skip a line}
-                                            // Get pizza size
+                Console.WriteLine(".\n");
             }
+        }
 
-
-
-
-
-
-
-
-            }
-
-        public static string ValidateCrustSize()
+        public static string ValidateCrustSize(int i)
         {
-            Console.Write("What size pizza crust do you want: ");
+            Console.Write($"For pizza #{i}, What size pizza crust do you want? (small, medium, or large): ");
             var size = Console.ReadLine();
             size = size.ToLower();
             
@@ -118,7 +108,7 @@ namespace PizzaProject.UI
             {
                 Console.WriteLine("You did not enter small medium or large...");
                
-                Console.WriteLine("What size pizza crust do you want: ");
+                Console.Write("What size pizza crust do you want: ");
                 size = Console.ReadLine();
                 size = size.ToLower();
 
@@ -127,22 +117,21 @@ namespace PizzaProject.UI
             return size; 
         }
 
-        public static int ValidateNumberOfPizzas( )
+        public static int ValidateNumberOfPizzas()
         {
             int number;
 
             // Ask how many pizzas
-            Console.Write("How many pizzas would you like today?  (1 to 12:  ");
+            Console.Write("How many pizzas would you like today?  (1 to 12): ");
             number = int.Parse(Console.ReadLine());
 
             while (number < 1 || number > 12)
             {
-                Console.WriteLine("That number is not allowed. Please enter an integer from 1 to 12:  ");
+                Console.Write("That number is not allowed. Please enter an integer from 1 to 12: ");
                 number = int.Parse(Console.ReadLine());
             }
 
             return number; 
-
         }
     }
 }
