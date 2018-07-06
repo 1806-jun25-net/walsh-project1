@@ -56,11 +56,15 @@ namespace PizzaProject.UI
         public static void GetPizzaInfo(User user)
         {
 
-           
 
-            var number = int.Parse(Console.ReadLine());
 
             // integer validation
+            int number = ValidateNumberOfPizzas();
+
+            // test 
+
+
+            Console.WriteLine(number);
 
             for(int i = 0; i < number; ++number)
             {
@@ -131,9 +135,10 @@ namespace PizzaProject.UI
             Console.Write("How many pizzas would you like today?  (1 to 12:  ");
             number = int.Parse(Console.ReadLine());
 
-            while (number < 0 && number > 12)
+            while (number < 1 || number > 12)
             {
                 Console.WriteLine("That number is not allowed. Please enter an integer from 1 to 12:  ");
+                number = int.Parse(Console.ReadLine());
             }
 
             return number; 

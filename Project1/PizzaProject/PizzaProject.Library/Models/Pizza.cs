@@ -12,7 +12,7 @@ namespace PizzaProject.Library.Models
          * Crust: Small, Medium Large
          */
         public List<string> ToppingsList { get; set; }
-        public double TotalCost { get; set; }
+        public double Cost { get; set; }
         public string CrustSize { get; set; }
 
         // set toppings and crust
@@ -47,7 +47,7 @@ namespace PizzaProject.Library.Models
                     total += 1;
             }
 
-            TotalCost = total;
+            Cost = total;
         }
     }
 }
