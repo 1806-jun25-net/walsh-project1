@@ -25,6 +25,8 @@ public class Location1
     public static int MediumCrust { get; set; } = 5000;
     public static int LargeCrust { get; set; } = 5000;
 
+    // costs of 
+
     public static string LocationName1 { get; } = "Location 1";
 
     // take order value and check if there are enough inventory items to make order. 

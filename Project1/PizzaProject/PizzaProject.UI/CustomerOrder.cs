@@ -49,20 +49,44 @@ namespace PizzaProject.UI
 
             // create user object with customer info
             User customer = new User(firstName, lastName, phoneNumber, locationName);
-            OrderPizza(customer);
+            GetPizzaInfo(customer);
         }
 
-        public static void OrderPizza(User user)
+        public static void GetPizzaInfo(User user)
         {
-            // order pizza from correct location
-            if (user.DefaultLocation == "Location 1")
+            // Get pizza size
+            var size =  ValidateCrustSize();
+
+            // Get toppings
+            Console.WriteLine("Tell me which toppings you would like.");
+            Console.WriteLine("Our toppings include Pepperoni, Sauce, Cheese and Sausage.");
+            Console.WriteLine("All pizzas come with sauce and cheese. Would you like to add pepperoni? (Y or N) ");
+
+
+
+
+
+            
+        }
+
+        public static string ValidateCrustSize()
+        {
+            Console.WriteLine("What size pizza crust do you want: ");
+            var size = Console.ReadLine();
+            size = size.ToLower();
+            
+
+            while (size != "small" && size != "medium" && size != "large")
             {
-
-
-
-
+                Console.WriteLine("You did not enter small medium or large...");
+               
+                Console.WriteLine("What size pizza crust do you want: ");
+                size = Console.ReadLine();
+                size = size.ToLower();
 
             }
+
+            return size; 
         }
     }
 }

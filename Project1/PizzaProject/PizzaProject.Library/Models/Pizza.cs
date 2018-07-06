@@ -7,8 +7,7 @@ namespace PizzaProject.Library.Models
     public class Pizza
     {
         /*
-         * Toppings: Pepperoni, Sauce, Cheese, Chicken, Sausage, Peppers, Onions
-         *           Jalapenos.
+         * Toppings: Pepperoni, Sauce, Cheese, Sausage
          *           
          * Crust: Small, Medium Large
          */
