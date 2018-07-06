@@ -52,6 +52,7 @@ namespace PizzaProject.UI
             GetPizzaInfo(customer);
         }
 
+        // prompt user for pizza crust and topping information
         public static void GetPizzaInfo(User user)
         {
             // Get pizza size

@@ -13,7 +13,7 @@ public class User
     public string DefaultLocation { set; get; }
     public DateTime OrderTime { set; get; } 
     public bool AlreadyOrdered { set; get; } = false;
-    public List<Pizza> PizzasOrdered { set; get;  }
+    public List<Pizza> PizzasOrdered { set; get; } = new List<Pizza>();
 
 
     public SortedSet<DateTime> OrderTimes { set; get; }
