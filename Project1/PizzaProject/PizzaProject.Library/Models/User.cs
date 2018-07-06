@@ -19,7 +19,7 @@ public class User
     public SortedSet<DateTime> OrderTimes { set; get; }
     public List<List<string>> OrderHistory { get; set; }
 
-    // default constructer
+    // default empty constructer
     public User()
     {
 

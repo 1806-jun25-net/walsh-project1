@@ -49,10 +49,20 @@ namespace PizzaProject.UI
 
             // create user object with customer info
             User customer = new User(firstName, lastName, phoneNumber, locationName);
+            OrderPizza(customer);
+        }
 
-            
+        public static void OrderPizza(User user)
+        {
+            // order pizza from correct location
+            if (user.DefaultLocation == "Location 1")
+            {
 
 
+
+
+
+            }
         }
     }
 }
