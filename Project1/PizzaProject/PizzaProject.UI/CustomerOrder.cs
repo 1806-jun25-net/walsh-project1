@@ -57,21 +57,44 @@ namespace PizzaProject.UI
             // Get pizza size
             var size =  ValidateCrustSize();
 
-            // Get toppings
+            // store toppings. all pizzas have sauce and cheese
+            List<string> toppings = new List<string>() { "sauce", "cheese" };
+
+            // Get toppings. Add pepperoni and sausage to toppings list if user requests
             Console.WriteLine("Tell me which toppings you would like.");
             Console.WriteLine("Our toppings include Pepperoni, Sauce, Cheese and Sausage.");
             Console.WriteLine("All pizzas come with sauce and cheese. Would you like to add pepperoni? (Y or N) ");
 
+            var input = Menu.ValidateStringInput();     // validate "y" or "n" input 
+            if(input == "y")
+                toppings.Add("pepperoni");
+
+            Console.WriteLine("Would you like to add sausage? ( Y or N) ");
+            input = Menu.ValidateStringInput();
+            if(input == "y")
+                toppings.Add("sausage");
+
+            // show order to customer with crust size and thier choice of toppings 
+            Console.Write("Great! Let me repeat your order: We have a " + size + " pizza");
+            Console.Write(" with ");
+            foreach(string value in toppings )
+            {
+                Console.Write(value + " ");
+            }
+            Console.WriteLine();        // skip a line
 
 
 
 
-            
-        }
+
+
+
+
+    }
 
         public static string ValidateCrustSize()
         {
-            Console.WriteLine("What size pizza crust do you want: ");
+            Console.Write("What size pizza crust do you want: ");
             var size = Console.ReadLine();
             size = size.ToLower();
             
