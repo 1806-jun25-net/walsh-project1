@@ -7,7 +7,7 @@ using System.Text;
 namespace PizzaProject.Library.Models
 {
     public class Order 
-    {
+    {  
         public string LocationName { get; set; }
         public User Customer { get; set; } = new User();
         public DateTime OrderTime { get; set; }

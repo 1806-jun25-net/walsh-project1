@@ -55,34 +55,44 @@ namespace PizzaProject.UI
         // prompt user for pizza crust and topping information
         public static void GetPizzaInfo(User user)
         {
-            // Get pizza size
-            var size =  ValidateCrustSize();
 
-            // store toppings. all pizzas have sauce and cheese
-            List<string> toppings = new List<string>() { "sauce", "cheese" };
+           
 
-            // Get toppings. Add pepperoni and sausage to toppings list if user requests
-            Console.WriteLine("Tell me which toppings you would like.");
-            Console.WriteLine("Our toppings include Pepperoni, Sauce, Cheese and Sausage.");
-            Console.WriteLine("All pizzas come with sauce and cheese. Would you like to add pepperoni? (Y or N) ");
+            var number = int.Parse(Console.ReadLine());
 
-            var input = Menu.ValidateStringInput();     // validate "y" or "n" input 
-            if(input == "y")
-                toppings.Add("pepperoni");
+            // integer validation
 
-            Console.WriteLine("Would you like to add sausage? ( Y or N) ");
-            input = Menu.ValidateStringInput();
-            if(input == "y")
-                toppings.Add("sausage");
-
-            // show order to customer with crust size and thier choice of toppings 
-            Console.Write("Great! Let me repeat your order: We have a " + size + " pizza");
-            Console.Write(" with ");
-            foreach(string value in toppings )
+            for(int i = 0; i < number; ++number)
             {
-                Console.Write(value + " ");
+                var size = ValidateCrustSize();
+
+                // store toppings. all pizzas have sauce and cheese
+                List<string> toppings = new List<string>() { "sauce", "cheese" };
+
+                // Get toppings. Add pepperoni and sausage to toppings list if user requests
+                Console.WriteLine("Tell me which toppings you would like.");
+                Console.WriteLine("Our toppings include Pepperoni, Sauce, Cheese and Sausage.");
+                Console.WriteLine("All pizzas come with sauce and cheese. Would you like to add pepperoni? (Y or N) ");
+
+                var input = Menu.ValidateStringInput();     // validate "y" or "n" input 
+                if(input == "y")
+                    toppings.Add("pepperoni");
+
+                Console.WriteLine("Would you like to add sausage? ( Y or N) ");
+                input = Menu.ValidateStringInput();
+                if(input == "y")
+                    toppings.Add("sausage");
+
+                // show order to customer with crust size and thier choice of toppings 
+                Console.Write("Great! Let me repeat your order: We have a " + size + " pizza");
+                Console.Write(" with ");
+                foreach(string value in toppings)
+                {
+                    Console.Write(value + " ");
+                }
+                Console.WriteLine();        // skip a line}
+                                            // Get pizza size
             }
-            Console.WriteLine();        // skip a line
 
 
 
@@ -91,7 +101,7 @@ namespace PizzaProject.UI
 
 
 
-    }
+            }
 
         public static string ValidateCrustSize()
         {
@@ -111,6 +121,23 @@ namespace PizzaProject.UI
             }
 
             return size; 
+        }
+
+        public static int ValidateNumberOfPizzas( )
+        {
+            int number;
+
+            // Ask how many pizzas
+            Console.Write("How many pizzas would you like today?  (1 to 12:  ");
+            number = int.Parse(Console.ReadLine());
+
+            while (number < 0 && number > 12)
+            {
+                Console.WriteLine("That number is not allowed. Please enter an integer from 1 to 12:  ");
+            }
+
+            return number; 
+
         }
     }
 }
