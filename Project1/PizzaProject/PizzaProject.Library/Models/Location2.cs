@@ -6,9 +6,15 @@ namespace PizzaProject.Library.Models
 {
     public class Location2 
     {
-        private readonly string locationName = "Location 2";
+        public string LocationName { get; set; } = "Location 2";
 
-        public string LocationName { get; }
+        // IAddress implementation
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string ZipCode { get; set; }
+
+
         public List<Order> OrderHistory { get; set; }
 
         /* Inventory:

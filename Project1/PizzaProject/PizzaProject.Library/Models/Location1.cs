@@ -1,3 +1,4 @@
+using PizzaProject.Library.Interfaces;
 using PizzaProject.Library.Models;
 using System;
 using System.Collections;
@@ -7,8 +8,16 @@ using System.Collections.Generic;
 // with order history and inventory. Rejects order
 // if inventory is not sufficient. Decrements inventory
 // when orders are accepted. 
-public class Location1
+public class Location1 : IAddress
 {
+    public string LocationName { get; set; } = "Location 1";
+
+    // IAddress implementation
+    public string Street { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    public string ZipCode { get; set; }
+
     public List<Order> OrderHistory { get; set; } = new List<Order>();
 
     /* Inventory:
@@ -25,9 +34,13 @@ public class Location1
     public static int MediumCrust { get; set; } = 5000;
     public static int LargeCrust { get; set; } = 5000;
 
-    // costs of 
+    
 
-    public static string LocationName1 { get; } = "Location 1";
+    // default empty constructor
+    public Location1()
+    {
+
+    }
 
     // take order value and check if there are enough inventory items to make order. 
     public Location1( Order order )

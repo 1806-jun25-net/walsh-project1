@@ -4,12 +4,19 @@ using PizzaProject.Library.Models;
 using System;
 using System.Collections.Generic;
 
-public class User 
+public class User : IAddress
 {
     
     public string FirstName { set; get; }
     public string LastName { set; get; }
     public string PhoneNumber { set; get; }
+
+    // IAddress implementation 
+    public string Street { set; get; }
+    public string City { set; get; }
+    public string State { set; get; }
+    public string ZipCode { set; get; }
+
     public string DefaultLocation { set; get; }
     public bool AlreadyOrdered { set; get; } = false;
     public List<Pizza> PizzasOrdered { set; get; } = new List<Pizza>();
