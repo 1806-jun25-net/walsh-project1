@@ -58,12 +58,7 @@ namespace PizzaProject.UI
         {
             // integer validation
             int number = ValidateNumberOfPizzas();
-
             
-
-
-            Console.WriteLine(number);
-
             for(int i = 1; i <= number; i++)
             {
                 // Get pizza crust size
@@ -88,13 +83,10 @@ namespace PizzaProject.UI
                     toppings.Add("sausage");
 
                 // show order to customer with crust size and thier choice of toppings 
-                Console.Write("Great! Let me repeat your order: We have a " + size + " pizza");
-                Console.Write(" with ");
-                foreach(string value in toppings)
-                {
-                    Console.Write(value + " ");
-                }
-                Console.WriteLine(".\n");
+                Console.WriteLine($"Great! Let me repeat that: We have a {size} pizza with " +
+                                $"{ toppings[0]}, {toppings[1]}, {toppings[2]}, and {toppings[3]}.");
+
+                Console.WriteLine();        // skip a line
             }
         }
 
