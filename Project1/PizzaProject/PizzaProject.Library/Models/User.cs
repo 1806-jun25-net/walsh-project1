@@ -73,7 +73,7 @@ public class User : IAddress
         return AlreadyOrdered;
     }
 
-    public override string ToString( ) => ( $"{FirstName}, {LastName}, {PhoneNumber}, {Street}, {City}," +
+    public override string ToString( ) => ( $"{FirstName}, {LastName}, {PhoneNumber}, {Street}, {City}, " +
                 $"{State}, {ZipCode}" );
 
 

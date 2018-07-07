@@ -6,11 +6,11 @@ using Xunit;
 
 namespace XUnitTestProject1
 {
-    public class UnitTest1
+    public class UserTest
     {
        
         
-            // Test blank constructor
+        // Test all fields return valid strings 
         [Fact]
         public void CustomerInfoWithFirstLastPhoneStreetCityStateZip( )
         {
@@ -24,11 +24,11 @@ namespace XUnitTestProject1
             string zipcode = "90210";
             User customer = new User(name1, name2, phone, street, city, state, zipcode);
 
-            string expected = customer.FirstName;
+            string expected = "Davy, Crocket, 999-336-6578, somewhere USA, Herndon, VA, 90210";
 
 
             // act
-            string actual = "Davy";
+            string actual = customer.ToString();
             
 
             // assert
