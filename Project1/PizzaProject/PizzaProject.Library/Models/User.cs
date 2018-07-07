@@ -33,12 +33,16 @@ public class User : IAddress
     }
 
     // enter user first name last name and phone number
-    public User( string firstName, string lastName, string phoneNumber )
+    public User( string firstName, string lastName, string phoneNumber, string street,
+                 string city, string state, string zipcode)
     {
         FirstName = firstName;
         LastName = lastName;
         PhoneNumber = phoneNumber;
-
+        Street = street;
+        City = city;
+        State = state;
+        ZipCode = zipcode;
     }
 
     // enter user first name last name phone number and default location 
@@ -68,5 +72,11 @@ public class User : IAddress
     {
         return AlreadyOrdered;
     }
+
+    public override string ToString( ) => ( $"{FirstName}, {LastName}, {PhoneNumber}, {Street}, {City}," +
+                $"{State}, {ZipCode}" );
+
+
+
 }
 

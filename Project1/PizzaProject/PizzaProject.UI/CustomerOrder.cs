@@ -39,9 +39,20 @@ namespace PizzaProject.UI
             Console.Write("What is your phone number:  ");
             var phoneNumber = ValidatePhoneNUmber();
 
+            Console.Write("What is your street address:  ");
+            var street = Console.ReadLine();
+
+            Console.Write("What is your city:  ");
+            var city = Console.ReadLine();
+
+            Console.Write("What is your state:  ");
+            var state = Console.ReadLine();
+
+            Console.Write("What is your zip code:  ");
+            var zipCode = Console.ReadLine();
+
             Console.Write("What location do you want? Choose location 1 or 2: Enter an integer:  ");
             var locationNumber = ValidateStoreLocation();
-
             
 
             if(locationNumber == 1)
@@ -57,7 +68,7 @@ namespace PizzaProject.UI
                 
 
             // create user object with customer info
-            User customer = new User(firstName, lastName, phoneNumber);
+            User customer = new User(firstName, lastName, phoneNumber, street, city, state, zipCode);
             GetPizzaInfo(customer);
         }
 
