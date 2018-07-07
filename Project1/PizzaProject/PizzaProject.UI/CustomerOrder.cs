@@ -38,8 +38,8 @@ namespace PizzaProject.UI
             Console.Write("What is your phone number:  ");
             var phoneNumber = ValidatePhoneNUmber();
 
-            Console.Write("What location do you want to choose location 1 or 2: Enter an integer ");
-            var locationNumber = int.Parse(Console.ReadLine());
+            Console.Write("What location do you want? Choose location 1 or 2: Enter an integer:  ");
+            var locationNumber = ValidateStoreLocation();
 
             string locationName;
 
@@ -161,7 +161,7 @@ namespace PizzaProject.UI
                         valid = true;
                     else
                     {
-                        Console.WriteLine("Error. Incorrect format for phone number. Too many digits!");
+                        Console.WriteLine("Error. Incorrect format for phone number...");
                         Console.Write("Please enter a phone number in xxx-xx-xxxx format: ");
                         phone = Console.ReadLine();
 
@@ -172,6 +172,44 @@ namespace PizzaProject.UI
 
             return phone;
         }
+
+        public static int ValidateStoreLocation()
+        { 
+            // get user input 
+            string input = Console.ReadLine();
+
+            bool integerInput = false;       // for tryParse to test if string can be converted to int
+            int choice;                     // convert user input string to integer
+
+            do
+            {
+
+                // check if integer string, if so so convert string input into int choice
+                integerInput = int.TryParse(input, out choice);
+
+                // if non integer value, issue error message and prompt user to re-enter value. 
+                // If integer is entered continues to while loop for range of values accepted
+                if(!integerInput)
+                {
+                    Console.Write("That was not a number. Please enter integers 1 or 2 only:  ");
+                    input = Console.ReadLine();
+                }
+                else
+                    integerInput = true;
+
+            } while(!integerInput);
+
+
+            // validate integer from  1 or 2
+            while(choice != 1 && choice != 2)
+            {
+                Console.Write("Error. You must enter an integer 1 or 2:  ");
+                choice = int.Parse(Console.ReadLine());
+            }
+
+            return choice;
+        }
+    
 
         public static string RemoveNonNumeric( string phone )
         {
