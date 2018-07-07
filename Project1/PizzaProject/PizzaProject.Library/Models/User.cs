@@ -18,13 +18,13 @@ public class User : IAddress
     public string ZipCode { set; get; }
 
     public string DefaultLocation { set; get; }
-    public bool AlreadyOrdered { set; get; } = false;
-    public List<Pizza> PizzasOrdered { set; get; } = new List<Pizza>();
-    public DateTime OrderTime { set; get; }
+    public static bool AlreadyOrdered { set; get; } = false;
+    // public List<Pizza> PizzasOrdered { set; get; } = new List<Pizza>();
+    // public DateTime OrderTime { set; get; }
 
-
-    public SortedSet<DateTime> OrderTimes { set; get; }
-    public List<List<string>> OrderHistory { get; set; }
+    // not sure 
+    //public SortedSet<DateTime> OrderTimes { set; get; }
+    // public List<List<string>> OrderHistory { get; set; }
 
     // default empty constructer
     public User()
@@ -56,11 +56,12 @@ public class User : IAddress
 
     }
 
-    // set order time
+    /* set order time
     public void SetOrderTime( DateTime time )
     {
         OrderTime = time;
     }
+    */
 
     // check if user has already ordered
     public bool CheckIfPreviousOrdered( )

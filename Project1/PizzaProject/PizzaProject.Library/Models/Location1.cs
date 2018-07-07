@@ -8,20 +8,12 @@ using System.Collections.Generic;
 // with order history and inventory. Rejects order
 // if inventory is not sufficient. Decrements inventory
 // when orders are accepted. 
-public class Location1 : IAddress
+public class Location1 : Location, IAddress
 {
     public string LocationName { get; set; } = "Location 1";
 
-    // IAddress implementation
-    public string Street { get; set; }
-    public string City { get; set; }
-    public string State { get; set; }
-    public string ZipCode { get; set; }
-
-    public List<Order> OrderHistory { get; set; } = new List<Order>();
-
     /* Inventory:
-     * Ingredients: Pepperoni, Cheese, Chicken, Sausage, Onions
+     * Ingredients: Pepperoni, Cheese, Chicken, Sausage
           
        Crust: Small, Medium Large
     */
@@ -33,6 +25,8 @@ public class Location1 : IAddress
     public static int SmallCrust { get; set; } = 5000;
     public static int MediumCrust { get; set; } = 5000;
     public static int LargeCrust { get; set; } = 5000;
+
+    public static List<Order> OrderHistory { get; set; } 
 
     
 
@@ -52,9 +46,13 @@ public class Location1 : IAddress
     }
 
 
+    public bool CheckInventory( Order order )
+    {
 
-    // public bool CheckInventory(Order order);
-    // public void UseInventory(Order order); 
+        return true;
+    }
+
+     public void UseInventory(Order order) { }
 
 
 
