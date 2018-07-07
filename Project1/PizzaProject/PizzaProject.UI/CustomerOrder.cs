@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace PizzaProject.UI
 {
@@ -35,7 +36,7 @@ namespace PizzaProject.UI
             var lastName = Console.ReadLine();
 
             Console.Write("What is your phone number:  ");
-            var phoneNumber = Console.ReadLine();
+            var phoneNumber = ValidatePhoneNUmber();
 
             Console.Write("What location do you want to choose location 1 or 2: Enter an integer ");
             var locationNumber = int.Parse(Console.ReadLine());
@@ -132,6 +133,49 @@ namespace PizzaProject.UI
             }
 
             return number; 
+        }
+
+        // uses regular expression replace to remove formatting from phone number input and compares to 10 digits
+        // to ensure correct phone number
+        public static string ValidatePhoneNUmber()
+        {
+            
+            bool valid = false;
+
+            // get phone number from user
+            var phone = Console.ReadLine();
+
+            do
+            {
+                // if empty string is  input 
+                if (phone == "")
+                {
+                    Console.WriteLine("Error. Phone number cannot be empty.");
+                    Console.Write("Please enter a phone number in xxx-xx-xxxx format: ");
+                    phone = Console.ReadLine();
+                }
+                else
+                {   // remove all characters from phone input and check if length of digits is 9 for valid input
+                    var strippedPhoneNumber = Regex.Replace(phone, @"[^0-9]+", "");
+                    if(strippedPhoneNumber.Length == 9)
+                        valid = true;
+                    else
+                    {
+                        Console.WriteLine("Error. Incorrect format for phone number. Too many digits!");
+                        Console.Write("Please enter a phone number in xxx-xx-xxxx format: ");
+                        phone = Console.ReadLine();
+
+                    }
+                }
+
+            } while (!valid);
+
+            return phone;
+        }
+
+        public static string RemoveNonNumeric( string phone )
+        {
+            return Regex.Replace(phone, @"[^0-9]+", "");
         }
     }
 }
