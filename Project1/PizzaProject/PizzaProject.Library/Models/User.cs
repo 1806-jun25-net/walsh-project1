@@ -60,8 +60,5 @@ public class User
     {
         return AlreadyOrdered;
     }
-
-   
-
 }
 
