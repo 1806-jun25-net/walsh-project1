@@ -4,17 +4,10 @@ using System.Text;
 
 namespace PizzaProject.Library.Models
 {
-    public class Location2 
+    public class Location2 : Location
     {
         public string LocationName { get; set; } = "Location 2";
-
-        // IAddress implementation
-        public string Street { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string ZipCode { get; set; }
-
-
+        
         public List<Order> OrderHistory { get; set; }
 
         /* Inventory:

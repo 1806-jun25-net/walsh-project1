@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PizzaProject.Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -41,15 +42,22 @@ namespace PizzaProject.UI
             Console.Write("What location do you want? Choose location 1 or 2: Enter an integer:  ");
             var locationNumber = ValidateStoreLocation();
 
-            string locationName;
+            
 
             if(locationNumber == 1)
-                locationName = "Location 1";
+            {   
+                Location1 pizzaStore = new Location1();
+                
+            }
+                
             else
-                locationName = "Location 2";
+            {
+                Location2 pizzaStore = new Location2();
+            }
+                
 
             // create user object with customer info
-            User customer = new User(firstName, lastName, phoneNumber, locationName);
+            User customer = new User(firstName, lastName, phoneNumber);
             GetPizzaInfo(customer);
         }
 
@@ -87,8 +95,28 @@ namespace PizzaProject.UI
                                 $"{ toppings[0]}, {toppings[1]}, {toppings[2]}, and {toppings[3]}.");
 
                 Console.WriteLine();        // skip a line
+
+                // submit user info to order
+               // SubmitOrder(user);
             }
         }
+
+        /*
+        public static void SubmitOrder(User user)
+        {
+            // location from user
+            var locatioName = user.DefaultLocation;
+
+            Location1 location = new Location1();
+
+            if(name == user.DefaultLocation)
+            {
+                Location thisone = new Location1();
+            }
+                
+        }
+        */
+        
 
         public static string ValidateCrustSize(int i)
         {
