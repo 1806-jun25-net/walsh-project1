@@ -33,10 +33,10 @@ public class Location
         if (name == "Location 1")
         {
             LocationName = name;
-            Pepperoni = size * 10;
+            Pepperoni = size;
             Cheese = size;
             Sauce = size;
-            Sausage = size * 10;
+            Sausage = size;
             SmallCrust = size;
             MediumCrust = size;
             LargeCrust = size;
@@ -45,10 +45,10 @@ public class Location
         if (name == "Location 2")
         {
             LocationName = name;
-            Pepperoni = (size * 4) / 2;
+            Pepperoni = size / 2;
             Cheese = size / 2;
             Sauce = size / 2;
-            Sausage = (size * 4) / 2;
+            Sausage = size / 2;
             SmallCrust = size / 2;
             MediumCrust = size / 2;
             LargeCrust = size / 2; 

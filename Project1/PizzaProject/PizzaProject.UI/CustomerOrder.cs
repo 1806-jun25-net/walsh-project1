@@ -59,7 +59,7 @@ namespace PizzaProject.UI
             var location = locationNumber.ToString();
 
             var locationName = $"Location {location}";
-            Location pizzaStore = new Location(locationName, 2);       // needs clarification -----------------------------//
+            Location pizzaStore = new Location(locationName, 5000);       
             User customer = new User(firstName, lastName, phoneNumber, street, city, state, zipCode);
             customer.DefaultLocation = pizzaStore.LocationName;     // set defualt location to location name
 
@@ -122,19 +122,17 @@ namespace PizzaProject.UI
                 }
               
             } while(!enough);
-
-
-
+            
             // get time of order
             DateTime orderTime = DateTime.Now;
-
             
-            // submit order. If cost is over $500 dollars order will be rejected and 
+            // submit order. If cost is over $500 dollars order will be rejected (exception thrown) and 
             // customer will need to start a new order 
             try
             {
                 
                 Order order = new Order(store, customer, orderTime, pizzas);
+                
                 // call submit order to finalize order
                 SubmitOrder(order,store, customer);
             }
@@ -146,7 +144,7 @@ namespace PizzaProject.UI
             
         }
         
-        // let location handle if order can be fullfilled
+        // send order to location
         public static void SubmitOrder(Order order, Location store, User customer)
         {
             // check pizza order
