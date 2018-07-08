@@ -59,7 +59,7 @@ namespace PizzaProject.UI
             var location = locationNumber.ToString();
 
             var locationName = $"Location {location}";
-            Location pizzaStore = new Location(locationName);
+            Location pizzaStore = new Location(locationName, 3);       // needs clarification -----------------------------//
             User customer = new User(firstName, lastName, phoneNumber, street, city, state, zipCode);
             customer.DefaultLocation = pizzaStore.LocationName;     // set defualt location to location name
 
@@ -93,16 +93,13 @@ namespace PizzaProject.UI
                 var input = Menu.ValidateStringInput();     // validate "y" or "n" input 
                 if(input == "y")
                     toppings.Add("pepperoni");
+                
 
                 Console.WriteLine("Would you like to add sausage? ( Y or N) ");
                 input = Menu.ValidateStringInput();
                 if(input == "y")
                     toppings.Add("sausage");
-
-                // show order to customer with crust size and thier choice of toppings 
-                Console.WriteLine($"Great! Let me repeat that: We have a {size} pizza with " +
-                                $"{ toppings[0]}, {toppings[1]}, {toppings[2]}, and {toppings[3]}.");
-
+                
                 Console.WriteLine();        // skip a line
 
                 // create pizza object and add to list of pizzas for order
@@ -114,6 +111,15 @@ namespace PizzaProject.UI
             // get time of order
             DateTime orderTime = DateTime.Now;
 
+            // check if store enough inventory for pizzas
+            var enough = store.EnoughInventory(pizzas);
+
+            // test
+            if(enough == false)
+                Console.WriteLine("There aren't enough ingredients");
+            else
+                Console.WriteLine("There are enough ingredients!!!!!!!");
+            /*
             // submit order. If cost is over $500 dollars order will be rejected and 
             // customer will need to start a new order 
             try
@@ -121,19 +127,21 @@ namespace PizzaProject.UI
                 
                 Order order = new Order(store, customer, orderTime, pizzas);
                 // call submit order to finalize order
-                SubmitOrder(order);
+                SubmitOrder(order,store, customer);
             }
             catch(Exception)
             {
                 Console.WriteLine("The cost of that order was over $500. Let's get another order.");
                 GetPizzaInfo(store, customer);
             }
+            */
         }
         
-        
-        public static void SubmitOrder(Order order)
+        // let location handle if order can be fullfilled
+        public static void SubmitOrder(Order order, Location store, User customer)
         {
-              
+            // check pizza order
+            
         }
         
         

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using PizzaProject.Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
 namespace PizzaProject.Test
 {
+    /*
     public class LocationTest
     {
         [Theory]
@@ -22,5 +24,21 @@ namespace PizzaProject.Test
             
 
         }
+
+        [Theory]
+        [InlineData]
+        public bool IsThereEnoughInventory()
+        {
+
+            // arrange
+            // store has 4 ingredients
+            Location store = new Location("test", 4);
+
+            // act
+
+            // assert
+            return true; 
+        }
     }
+    */
 }

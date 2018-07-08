@@ -33,7 +33,7 @@ namespace PizzaProject.UI
         static int ValidateMenuChoice()
         {
            
-            Console.WriteLine("Enter a command to choose menu or type 'exit' to quit...");
+            Console.WriteLine("Enter a command to choose menu or type '9' to quit...");
             string input = Console.ReadLine();
 
             bool integerInput = false;       // for tryParse to test if string can be converted to int
