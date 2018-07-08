@@ -13,7 +13,7 @@ public class Location
     public string LocationName { get; set; }
 
     /* Inventory:
-     * Ingredients: Pepperoni, Cheese, Chicken, Sauce, Sausage
+     * Ingredients: Pepperoni, Cheese, Sauce, Sausage
           
        Crust: Small, Medium Large
     */
@@ -65,18 +65,26 @@ public class Location
     {
         bool enough = true;
 
+        
+        int pepperoni = 0;
+        int cheese = 0;
+        int sauce = 0;
+        int sausage = 0;
         int smallCrust = 0;
         int mediumCrust = 0;
         int largeCrust = 0;
-        int pepperoni = 0;
-        int cheese = 0;
-        int sausage = 0;
 
+        // get total amou
         foreach (Pizza pizza in order.PizzaOrder)
         {
 
         }
         return true;
+    }
+
+    public void GetIngredientCount()
+    {
+
     }
 
     /* Inventory:
