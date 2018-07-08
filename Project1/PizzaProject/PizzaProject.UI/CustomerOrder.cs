@@ -53,31 +53,35 @@ namespace PizzaProject.UI
 
             Console.Write("What location do you want? Choose location 1 or 2: Enter an integer:  ");
             var locationNumber = ValidateStoreLocation();
+
+            // from location set defualt for customer and send user information to correct location
+            // convert integer choice to string
+                var location = locationNumber.ToString();
+
+                var locationName = $"Location {location}";
+                Location pizzaStore = new Location(locationName);
+                User customer = new User(firstName, lastName, phoneNumber, street, city, state, zipCode);
+                customer.DefaultLocation = pizzaStore.LocationName;     // set defualt location to location name
+
+                // test
+                Console.WriteLine($"The store input is: {pizzaStore.LocationName}");
+                GetPizzaInfo(pizzaStore, customer);
+
             
-
-            if(locationNumber == 1)
-            {   
-                Location1 pizzaStore = new Location1();
-                
-            }
-                
-            else
-            {
-                Location2 pizzaStore = new Location2();
-            }
-                
-
-            // create user object with customer info
-            User customer = new User(firstName, lastName, phoneNumber, street, city, state, zipCode);
-            GetPizzaInfo(customer);
+           
+           
         }
 
         // prompt user for pizza crust and topping information
-        public static void GetPizzaInfo(User user)
+        public static void GetPizzaInfo( Location store, User customer)
         {
-            // integer validation
+           
+            // integer validation for number of pizzas
             int number = ValidateNumberOfPizzas();
-            
+
+            // make a list of pizzas 
+            List<Pizza> pizzas = new List<Pizza>();
+
             for(int i = 1; i <= number; i++)
             {
                 // Get pizza crust size
@@ -107,11 +111,35 @@ namespace PizzaProject.UI
 
                 Console.WriteLine();        // skip a line
 
-                // submit user info to order
-               // SubmitOrder(user);
+                // create pizza object and add to list of pizzas for order
+                Pizza pizza = new Pizza(size, toppings);
+                pizzas.Add(pizza);
+            
+            }
+
+            // get time of order
+            DateTime orderTime = DateTime.Now;
+
+            // submit order. If cost is over $500 dollars order will be rejected and 
+            // customer will need to start a new order 
+            try
+            {
+                
+                Order order = new Order(store, customer, orderTime, pizzas);
+
+                // test output
+                Console.WriteLine("Customer first name: ", customer.FirstName);
+                Console.WriteLine("Store location: ");
+         
+                // call submit order to finalize order
+            }
+            catch(Exception)
+            {
+                Console.WriteLine("The cost of that order was over $500. Let's get another order.");
+                GetPizzaInfo(store, customer);
             }
         }
-
+        
         /*
         public static void SubmitOrder(User user)
         {

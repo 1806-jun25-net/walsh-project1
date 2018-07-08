@@ -19,13 +19,7 @@ public class User : IAddress
 
     public string DefaultLocation { set; get; }
     public static bool AlreadyOrdered { set; get; } = false;
-    // public List<Pizza> PizzasOrdered { set; get; } = new List<Pizza>();
-    // public DateTime OrderTime { set; get; }
-
-    // not sure 
-    //public SortedSet<DateTime> OrderTimes { set; get; }
-    // public List<List<string>> OrderHistory { get; set; }
-
+    
     // default empty constructer
     public User()
     {
@@ -54,11 +48,6 @@ public class User : IAddress
         DefaultLocation = location;
 
     }
-    public void SetLocation( string location )
-    {
-        DefaultLocation = location;
-
-    }
 
     /* set order time
     public void SetOrderTime( DateTime time )
@@ -73,6 +62,7 @@ public class User : IAddress
         return AlreadyOrdered;
     }
 
+    // return all fields
     public override string ToString( ) => ( $"{FirstName}, {LastName}, {PhoneNumber}, {Street}, {City}, " +
                 $"{State}, {ZipCode}" );
 

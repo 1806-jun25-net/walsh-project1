@@ -9,12 +9,53 @@ namespace PizzaProject.Library.Models
     public class Order 
     {  
         
-        public string LocationName { get; set; } 
+        public Location Store { get; set; } 
+        public User Customer { get; set; }
         public DateTime OrderTime { get; set; }
-        public int NumberOfPizzas { get; set; }          // can't be less than zero or more than 12
-        public int Cost { get; set; }                   // can't exceed $500
+        public double TotalCost { get; set; }             // can't exceed $500
+        public List<Pizza> PizzaOrder { get; set; } = new List<Pizza>();
 
-       
+        public Order( )
+        {
 
+        }
+
+        public Order(Location store, User person, DateTime time, List<Pizza> orders)
+        {
+                Store = store;
+                Customer = person;
+                OrderTime = time;
+                PizzaOrder = orders;
+                CalculateCost();
+           
+        }
+
+        public void CalculateCost()
+        {
+            double cost = 0;
+
+            // get total cost from order
+            foreach (Pizza pizza in PizzaOrder)
+            {
+
+                cost += pizza.Cost;
+            }
+
+            if(cost > 500)
+            {
+                throw new Exception("Cost can't be more than 500 dollars");
+            }
+            else
+                TotalCost = cost; 
+        }
+
+        public void AddPizza( Pizza pizza ) => PizzaOrder.Add(pizza);
+
+        /*
+        public override string ToString( )
+        {
+            r
+        }
+        */
     }
 }
