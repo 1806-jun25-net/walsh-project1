@@ -59,66 +59,76 @@ namespace PizzaProject.UI
             var location = locationNumber.ToString();
 
             var locationName = $"Location {location}";
-            Location pizzaStore = new Location(locationName, 3);       // needs clarification -----------------------------//
+            Location pizzaStore = new Location(locationName, 2);       // needs clarification -----------------------------//
             User customer = new User(firstName, lastName, phoneNumber, street, city, state, zipCode);
             customer.DefaultLocation = pizzaStore.LocationName;     // set defualt location to location name
 
             GetPizzaInfo(pizzaStore, customer);
         }
 
-        // prompt user for pizza crust and topping information
+        // prompt user for pizza crust and topping information. will check if there is enough inventory at the store location.
+        // If location doesn't have enough inventory, method will loop asking customer for a new smaller order. 
         public static void GetPizzaInfo( Location store, User customer)
         {
-           
-            // integer validation for number of pizzas
-            int number = ValidateNumberOfPizzas();
-
-            // make a list of pizzas 
-            List<Pizza> pizzas = new List<Pizza>();
-
-            for(int i = 1; i <= number; i++)
+            bool enough;
+            do
             {
-                // Get pizza crust size
-                var size = ValidateCrustSize(i);
-                Console.WriteLine();            // skip line
+                // integer validation for number of pizzas
+                int number = ValidateNumberOfPizzas();
 
-                // store toppings. all pizzas have sauce and cheese
-                List<string> toppings = new List<string>() { "sauce", "cheese" };
+                // make a list of pizzas 
+                List<Pizza> pizzas = new List<Pizza>();
 
-                // Get toppings. Add pepperoni and sausage to toppings list if user requests
-                Console.WriteLine($"For pizza #{i} Tell me which toppings you would like.");
-                Console.WriteLine("Our toppings include Pepperoni, Sauce, Cheese and Sausage.");
-                Console.WriteLine("All pizzas come with sauce and cheese. Would you like to add pepperoni? (Y or N) ");
+                for(int i = 1; i <= number; i++)
+                {
+                    // Get pizza crust size
+                    var size = ValidateCrustSize(i);
+                    Console.WriteLine();            // skip line
 
-                var input = Menu.ValidateStringInput();     // validate "y" or "n" input 
-                if(input == "y")
-                    toppings.Add("pepperoni");
-                
+                    // store toppings. all pizzas have sauce and cheese
+                    List<string> toppings = new List<string>() { "sauce", "cheese" };
 
-                Console.WriteLine("Would you like to add sausage? ( Y or N) ");
-                input = Menu.ValidateStringInput();
-                if(input == "y")
-                    toppings.Add("sausage");
-                
-                Console.WriteLine();        // skip a line
+                    // Get toppings. Add pepperoni and sausage to toppings list if user requests
+                    Console.WriteLine($"For pizza #{i} Tell me which toppings you would like.");
+                    Console.WriteLine("Our toppings include Pepperoni, Sauce, Cheese and Sausage.");
+                    Console.WriteLine("All pizzas come with sauce and cheese. Would you like to add pepperoni? (Y or N) ");
 
-                // create pizza object and add to list of pizzas for order
-                Pizza pizza = new Pizza(size, toppings);
-                pizzas.Add(pizza);
-            
-            }
+                    var input = Menu.ValidateStringInput();     // validate "y" or "n" input 
+                    if(input == "y")
+                        toppings.Add("pepperoni");
+
+
+                    Console.WriteLine("Would you like to add sausage? ( Y or N) ");
+                    input = Menu.ValidateStringInput();
+                    if(input == "y")
+                        toppings.Add("sausage");
+
+                    Console.WriteLine();        // skip a line
+
+                    // create pizza object and add to list of pizzas for order
+                    Pizza pizza = new Pizza(size, toppings);
+                    pizzas.Add(pizza);
+
+                }
+                // check location if there is enough inventory for the pizza selection.If not,
+                // user must enter new pizza order
+                enough = store.EnoughInventory(pizzas);
+
+                if(!enough)
+                {
+                    Console.WriteLine("Sorry, this location doesn't have enough inventory to make those pizzas.");
+                    Console.WriteLine("Let's try to make a smaller order...");
+                }
+                else
+                    Console.WriteLine("Let's get this order started!!!!!");
+
+            } while(!enough);
+
+
 
             // get time of order
             DateTime orderTime = DateTime.Now;
 
-            // check if store enough inventory for pizzas
-            var enough = store.EnoughInventory(pizzas);
-
-            // test
-            if(enough == false)
-                Console.WriteLine("There aren't enough ingredients");
-            else
-                Console.WriteLine("There are enough ingredients!!!!!!!");
             /*
             // submit order. If cost is over $500 dollars order will be rejected and 
             // customer will need to start a new order 
