@@ -263,7 +263,7 @@ namespace PizzaProject.UI
             return choice;
         }
     
-
+        // removes all formatting from string that is not a digit
         public static string RemoveNonNumeric( string phone )
         {
             return Regex.Replace(phone, @"[^0-9]+", "");
