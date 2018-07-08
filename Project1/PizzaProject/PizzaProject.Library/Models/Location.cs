@@ -55,7 +55,7 @@ public class Location
         }
     }
 
-    public void AddOrder(Order order )
+    public void AddOrderHistory(Order order )
     {
         OrderHistory.Add(order);
     }
