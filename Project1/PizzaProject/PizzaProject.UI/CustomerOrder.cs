@@ -120,12 +120,8 @@ namespace PizzaProject.UI
             {
                 
                 Order order = new Order(store, customer, orderTime, pizzas);
-
-                // test output
-                Console.WriteLine("Customer first name: ", customer.FirstName);
-                Console.WriteLine("Store location: ");
-         
                 // call submit order to finalize order
+                SubmitOrder(order);
             }
             catch(Exception)
             {
@@ -134,21 +130,12 @@ namespace PizzaProject.UI
             }
         }
         
-        /*
-        public static void SubmitOrder(User user)
+        
+        public static void SubmitOrder(Order order)
         {
-            // location from user
-            var locatioName = user.DefaultLocation;
-
-            Location1 location = new Location1();
-
-            if(name == user.DefaultLocation)
-            {
-                Location thisone = new Location1();
-            }
-                
+              
         }
-        */
+        
         
 
         public static string ValidateCrustSize(int i)

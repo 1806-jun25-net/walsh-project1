@@ -55,6 +55,10 @@ public class Location
         }
     }
 
+    public void AddOrder(Order order )
+    {
+        OrderHistory.Add(order);
+    }
 
     public bool CheckInventory( Order order )
     {

@@ -8,7 +8,6 @@ namespace PizzaProject.Library.Models
 {
     public class Order 
     {  
-        
         public Location Store { get; set; } 
         public User Customer { get; set; }
         public DateTime OrderTime { get; set; }
