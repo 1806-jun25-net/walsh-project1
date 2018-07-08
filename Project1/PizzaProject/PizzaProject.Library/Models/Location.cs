@@ -35,7 +35,6 @@ public class Location
             LocationName = name;
             Pepperoni = 5000;
             Cheese = 5000;
-            Chicken = 5000;
             Sausage = 5000;
             SmallCrust = 5000;
             MediumCrust = 5000;
@@ -47,7 +46,6 @@ public class Location
             LocationName = name;
             Pepperoni = 2500;
             Cheese = 2500;
-            Chicken = 2500;
             Sausage = 2500;
             SmallCrust = 2500;
             MediumCrust = 2500;
@@ -100,11 +98,6 @@ public class Location
     public void UseCheese()
     {
         Cheese -= 1;
-    }
-
-    public void UseChicken()
-    {
-        Chicken -= 10;
     }
 
     public void UseSauce()
