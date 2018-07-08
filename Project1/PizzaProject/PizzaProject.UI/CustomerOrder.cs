@@ -56,20 +56,14 @@ namespace PizzaProject.UI
 
             // from location set defualt for customer and send user information to correct location
             // convert integer choice to string
-                var location = locationNumber.ToString();
+            var location = locationNumber.ToString();
 
-                var locationName = $"Location {location}";
-                Location pizzaStore = new Location(locationName);
-                User customer = new User(firstName, lastName, phoneNumber, street, city, state, zipCode);
-                customer.DefaultLocation = pizzaStore.LocationName;     // set defualt location to location name
+            var locationName = $"Location {location}";
+            Location pizzaStore = new Location(locationName);
+            User customer = new User(firstName, lastName, phoneNumber, street, city, state, zipCode);
+            customer.DefaultLocation = pizzaStore.LocationName;     // set defualt location to location name
 
-                // test
-                Console.WriteLine($"The store input is: {pizzaStore.LocationName}");
-                GetPizzaInfo(pizzaStore, customer);
-
-            
-           
-           
+            GetPizzaInfo(pizzaStore, customer);
         }
 
         // prompt user for pizza crust and topping information
