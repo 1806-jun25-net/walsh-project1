@@ -70,14 +70,15 @@ namespace PizzaProject.UI
         // If location doesn't have enough inventory, method will loop asking customer for a new smaller order. 
         public static void GetPizzaInfo( Location store, User customer)
         {
-            bool enough;
+            bool enough;        // does location have enough inventory
+
+            // make a list of pizzas 
+            List<Pizza> pizzas = new List<Pizza>();
+
             do
             {
                 // integer validation for number of pizzas
                 int number = ValidateNumberOfPizzas();
-
-                // make a list of pizzas 
-                List<Pizza> pizzas = new List<Pizza>();
 
                 for(int i = 1; i <= number; i++)
                 {
@@ -119,9 +120,7 @@ namespace PizzaProject.UI
                     Console.WriteLine("Sorry, this location doesn't have enough inventory to make those pizzas.");
                     Console.WriteLine("Let's try to make a smaller order...");
                 }
-                else
-                    Console.WriteLine("Let's get this order started!!!!!");
-
+              
             } while(!enough);
 
 
@@ -129,7 +128,7 @@ namespace PizzaProject.UI
             // get time of order
             DateTime orderTime = DateTime.Now;
 
-            /*
+            
             // submit order. If cost is over $500 dollars order will be rejected and 
             // customer will need to start a new order 
             try
@@ -144,7 +143,7 @@ namespace PizzaProject.UI
                 Console.WriteLine("The cost of that order was over $500. Let's get another order.");
                 GetPizzaInfo(store, customer);
             }
-            */
+            
         }
         
         // let location handle if order can be fullfilled
