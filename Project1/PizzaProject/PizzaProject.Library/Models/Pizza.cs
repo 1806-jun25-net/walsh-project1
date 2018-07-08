@@ -34,6 +34,7 @@ namespace PizzaProject.Library.Models
                 total += 6;
             else if(CrustSize == "medium")
                 total += 8;
+            // large
             else
                 total += 10;
 

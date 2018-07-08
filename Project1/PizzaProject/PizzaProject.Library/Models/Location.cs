@@ -13,13 +13,13 @@ public class Location
     public string LocationName { get; set; }
 
     /* Inventory:
-     * Ingredients: Pepperoni, Cheese, Chicken, Sausage
+     * Ingredients: Pepperoni, Cheese, Chicken, Sauce, Sausage
           
        Crust: Small, Medium Large
     */
     public static int Pepperoni { get; set; } 
     public static int Cheese { get; set; } 
-    public static int Chicken { get; set; } 
+    public static int Sauce { get; set; }
     public static int Sausage { get; set; }  
     public static int SmallCrust { get; set; } 
     public static int MediumCrust { get; set; } 
@@ -60,14 +60,67 @@ public class Location
         OrderHistory.Add(order);
     }
 
-    public bool CheckInventory( Order order )
+    // checks if there is enough inventory for order 
+    public bool CheckOrder( Order order )
     {
+        bool enough = true;
 
+        int smallCrust = 0;
+        int mediumCrust = 0;
+        int largeCrust = 0;
+        int pepperoni = 0;
+        int cheese = 0;
+        int sausage = 0;
+
+        foreach (Pizza pizza in order.PizzaOrder)
+        {
+
+        }
         return true;
     }
 
-     public void UseInventory(Order order) { }
+    /* Inventory:
+     * Ingredients: Pepperoni, Cheese, Chicken, Sausage
+          
+       Crust: Small, Medium, Large
+    */
+    public void UsePepperoni()
+    {
+        Pepperoni -= 10;
+    }
 
+    public void UseCheese()
+    {
+        Cheese -= 1;
+    }
 
+    public void UseChicken()
+    {
+        Chicken -= 10;
+    }
+
+    public void UseSauce()
+    {
+        Sauce -= 1;
+    }
+    public void UseSausage()
+    {
+        Sausage -= 10;
+    }
+
+    public void UseSmallDough()
+    {
+        SmallCrust -= 1;
+    }
+
+    public void UseMediumDough()
+    {
+        MediumCrust -= 1;
+    }
+
+    public void UseLargeDough()
+    {
+        LargeCrust -= 1;
+    }
 
 }
