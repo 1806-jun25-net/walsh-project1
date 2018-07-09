@@ -18,13 +18,10 @@ namespace XUnitTestProject1
             string name1 = "Davy";
             string name2 = "Crocket";
             string phone = "999-336-6578";
-            string street = "somewhere USA";
-            string city = "Herndon";
-            string state = "VA";
-            string zipcode = "90210";
-            User customer = new User(name1, name2, phone, street, city, state, zipcode);
+          
+            User customer = new User(name1, name2, phone);
 
-            string expected = "Davy, Crocket, 999-336-6578, somewhere USA, Herndon, VA, 90210";
+            string expected = "Davy, Crocket, 999-336-6578";
 
 
             // act
