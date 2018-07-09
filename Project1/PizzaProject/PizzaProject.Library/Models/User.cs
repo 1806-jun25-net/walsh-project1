@@ -4,18 +4,12 @@ using PizzaProject.Library.Models;
 using System;
 using System.Collections.Generic;
 
-public class User : IAddress
+public class User 
 {
     
     public string FirstName { set; get; }
     public string LastName { set; get; }
     public string PhoneNumber { set; get; }
-
-    // IAddress implementation 
-    public string Street { set; get; }
-    public string City { set; get; }
-    public string State { set; get; }
-    public string ZipCode { set; get; }
 
     public string DefaultLocation { set; get; }
     public static bool AlreadyOrdered { set; get; } = false;
@@ -27,16 +21,11 @@ public class User : IAddress
     }
 
     // enter user first name last name and phone number
-    public User( string firstName, string lastName, string phoneNumber, string street,
-                 string city, string state, string zipcode)
+    public User( string firstName, string lastName, string phoneNumber)
     {
         FirstName = firstName;
         LastName = lastName;
         PhoneNumber = phoneNumber;
-        Street = street;
-        City = city;
-        State = state;
-        ZipCode = zipcode;
     }
 
     // enter user first name last name phone number and default location 
@@ -63,8 +52,7 @@ public class User : IAddress
     }
 
     // return all fields
-    public override string ToString( ) => ( $"{FirstName}, {LastName}, {PhoneNumber}, {Street}, {City}, " +
-                $"{State}, {ZipCode}" );
+    public override string ToString( ) => ( $"{FirstName}, {LastName}, {PhoneNumber}" );
 
 
 

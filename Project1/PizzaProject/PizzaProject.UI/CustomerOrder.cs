@@ -38,19 +38,7 @@ namespace PizzaProject.UI
 
             Console.Write("What is your phone number:  ");
             var phoneNumber = ValidatePhoneNUmber();
-
-            Console.Write("What is your street address:  ");
-            var street = Console.ReadLine();
-
-            Console.Write("What is your city:  ");
-            var city = Console.ReadLine();
-
-            Console.Write("What is your state:  ");
-            var state = Console.ReadLine();
-
-            Console.Write("What is your zip code:  ");
-            var zipCode = Console.ReadLine();
-
+            
             Console.Write("What location do you want? Choose location 1 or 2: Enter an integer:  ");
             var locationNumber = ValidateStoreLocation();
 
@@ -59,8 +47,8 @@ namespace PizzaProject.UI
             var location = locationNumber.ToString();
 
             var locationName = $"Location {location}";
-            Location pizzaStore = new Location(locationName, 2);       
-            User customer = new User(firstName, lastName, phoneNumber, street, city, state, zipCode);
+            Location pizzaStore = new Location(locationName, 2);
+            User customer = new User(firstName, lastName, phoneNumber);
             customer.DefaultLocation = pizzaStore.LocationName;     // set defualt location to location name
 
             GetPizzaInfo(pizzaStore, customer);
@@ -152,7 +140,7 @@ namespace PizzaProject.UI
         // send order to location
         public static void SubmitOrder(Order order, Location store, User customer)
         {
-            // check pizza order
+            // check pizza order  
             
         }
         
