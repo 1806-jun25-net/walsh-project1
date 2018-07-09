@@ -59,7 +59,7 @@ namespace PizzaProject.UI
             var location = locationNumber.ToString();
 
             var locationName = $"Location {location}";
-            Location pizzaStore = new Location(locationName, 5000);       
+            Location pizzaStore = new Location(locationName, 2);       
             User customer = new User(firstName, lastName, phoneNumber, street, city, state, zipCode);
             customer.DefaultLocation = pizzaStore.LocationName;     // set defualt location to location name
 
@@ -119,6 +119,11 @@ namespace PizzaProject.UI
                 {
                     Console.WriteLine("Sorry, this location doesn't have enough inventory to make those pizzas.");
                     Console.WriteLine("Let's try to make a smaller order...");
+                    pizzas.Clear();             // clear out old order
+                }
+                else
+                {
+                    Console.WriteLine("Let's make that pizza!!!!!");
                 }
               
             } while(!enough);
@@ -133,7 +138,7 @@ namespace PizzaProject.UI
                 
                 Order order = new Order(store, customer, orderTime, pizzas);
                 
-                // call submit order to finalize order
+                // Send to location to calculate inventory
                 SubmitOrder(order,store, customer);
             }
             catch(Exception)
@@ -212,7 +217,7 @@ namespace PizzaProject.UI
                 else
                 {   // remove all characters from phone input and check if length of digits is 9 for valid input
                     var strippedPhoneNumber = Regex.Replace(phone, @"[^0-9]+", "");
-                    if(strippedPhoneNumber.Length == 9)
+                    if(strippedPhoneNumber.Length == 10)
                         valid = true;
                     else
                     {

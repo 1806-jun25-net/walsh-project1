@@ -23,7 +23,16 @@ public class Location
     public static int Sausage { get; set; }  
     public static int SmallCrust { get; set; } 
     public static int MediumCrust { get; set; } 
-    public static int LargeCrust { get; set; } 
+    public static int LargeCrust { get; set; }
+
+    // order toppings count from pizza orders
+    private int pepperoni;
+    private int cheese;
+    private int sauce;
+    private int sausage;
+    private int smallCrust;
+    private int mediumCrust;
+    private int largeCrust;
 
     public static List<Order> OrderHistory { get; set; }
     
@@ -33,10 +42,10 @@ public class Location
         if (name == "Location 1")
         {
             LocationName = name;
-            Pepperoni = size;
+            Pepperoni = size * 10;
             Cheese = size;
             Sauce = size;
-            Sausage = size;
+            Sausage = size * 10;
             SmallCrust = size;
             MediumCrust = size;
             LargeCrust = size;
@@ -45,10 +54,10 @@ public class Location
         if (name == "Location 2")
         {
             LocationName = name;
-            Pepperoni = size / 2;
+            Pepperoni = (size * 10) / 2;
             Cheese = size / 2;
             Sauce = size / 2;
-            Sausage = size / 2;
+            Sausage = (size * 10) / 2;
             SmallCrust = size / 2;
             MediumCrust = size / 2;
             LargeCrust = size / 2; 
@@ -66,25 +75,24 @@ public class Location
     {
         bool enough = true;
 
-
-        int pepperoni = 0;
-        int cheese = 0;
-        int sauce = 0;
-        int sausage = 0;
-        int smallDough = 0;
-        int mediumDough = 0;
-        int largeDough = 0;
+        // initialize number of toppings in class
+        pepperoni = 0;
+        cheese = 0;
+        sauce = 0;
+        sausage = 0;
+        smallCrust = 0;
+        mediumCrust = 0;
+        largeCrust = 0;
 
         // count all the ingredients in all the pizzas
         foreach(Pizza pizza in Pizzas)
         {
-            CountPizzaIngredients(pizza, ref pepperoni, ref cheese, ref sauce, ref sausage, ref smallDough, 
-                                  ref mediumDough, ref largeDough);
+            CountPizzaIngredients(pizza);
         }
 
         // compare toppings to the inventory. Each pepperoni and sausage order uses 10 of each. 
         // All other ingredients only use 1 item in inventory
-        // 
+        
         if((10 * pepperoni) > Pepperoni)
             enough = false;
         else if((10 * sausage) > Sausage)
@@ -93,11 +101,11 @@ public class Location
             enough = false;
         else if(sauce > Sauce)
             enough = false;
-        else if(smallDough > SmallCrust)
+        else if(smallCrust > SmallCrust)
             enough = false;
-        else if(mediumDough > MediumCrust)
+        else if(mediumCrust > MediumCrust)
             enough = false;
-        else if(largeDough > LargeCrust)
+        else if(largeCrust > LargeCrust)
             enough = false;
 
         return enough;
@@ -105,8 +113,7 @@ public class Location
 
     // iterates through each topping on pizza and returns as reference the total number of 
     // ingredients it will take to make that pizza
-    public void CountPizzaIngredients(Pizza pizza, ref int pepperoni, ref int cheese, ref int sauce, ref int sausage,
-                                        ref int smallCrust, ref int mediumCrust, ref int largeCrust )
+    public void CountPizzaIngredients(Pizza pizza)
     {
         // count crust
         if (pizza.CrustSize == "small")
@@ -127,7 +134,6 @@ public class Location
                 sauce++;
             else
                 sausage++;
-
         }
     }
 
