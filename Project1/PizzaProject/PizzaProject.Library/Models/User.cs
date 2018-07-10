@@ -1,9 +1,3 @@
-using PizzaProject.Library.Interfaces;
-using PizzaProject.Library.Models;
-
-using System;
-using System.Collections.Generic;
-
 public class User 
 {
     

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PizzaProject.Library
+namespace PizzaProject.Data
 {
-    public partial class Pizza
+    public partial class Pizzas
     {
         public int PizzaId { get; set; }
         public int? Small { get; set; }

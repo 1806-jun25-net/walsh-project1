@@ -1,7 +1,8 @@
 ﻿
 
+using Microsoft.Extensions.Configuration;
 using System;
-
+using System.IO;
 
 namespace PizzaProject.UI
 {
@@ -9,6 +10,12 @@ namespace PizzaProject.UI
     {
         static void Main( string[ ] args )
         {
+            // get the configuration from file
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+            IConfigurationRoot configuration = builder.Build();
 
             int input;      // stores user menu choice 
 
