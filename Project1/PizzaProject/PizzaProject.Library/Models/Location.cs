@@ -139,38 +139,23 @@ public class Location
           
        Crust: Small, Medium, Large
     */
-    public void UsePepperoni()
+    public void UseInventory()
     {
-        Pepperoni -= 10;
+        SmallCrust -= smallCrust;
+        MediumCrust -= mediumCrust;
+        LargeCrust -= largeCrust;
+        Pepperoni -= 10 * pepperoni;
+        Sausage -= 10 * sausage;
+        Cheese -= cheese;
+        Sauce -= sauce;
     }
 
-    public void UseCheese()
+    public override string ToString( )
     {
-        Cheese -= 1;
+        string str = $"Small: {SmallCrust}, Medium: {MediumCrust}, Large: {LargeCrust}, Cheese: {Cheese} " +
+                     $"Sauce: {Sauce}, Pepperoni: {Pepperoni}, Sausage: {Sausage}\n";
+        return str;
     }
 
-    public void UseSauce()
-    {
-        Sauce -= 1;
-    }
-    public void UseSausage()
-    {
-        Sausage -= 10;
-    }
-
-    public void UseSmallDough()
-    {
-        SmallCrust -= 1;
-    }
-
-    public void UseMediumDough()
-    {
-        MediumCrust -= 1;
-    }
-
-    public void UseLargeDough()
-    {
-        LargeCrust -= 1;
-    }
 
 }

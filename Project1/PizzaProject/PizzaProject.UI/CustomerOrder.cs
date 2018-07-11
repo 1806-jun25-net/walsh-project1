@@ -48,6 +48,10 @@ namespace PizzaProject.UI
 
             var locationName = $"Location {location}";
             Location pizzaStore = new Location(locationName, 2);
+
+            // test inventory
+            Console.WriteLine(pizzaStore.ToString());
+
             User customer = new User(firstName, lastName, phoneNumber);
             customer.DefaultLocation = pizzaStore.LocationName;     // set defualt location to location name
 
@@ -99,9 +103,10 @@ namespace PizzaProject.UI
                     pizzas.Add(pizza);
 
                 }
+               
                 // check location if there is enough inventory for the pizza selection.If not,
                 // user must enter new pizza order
-                enough = store.EnoughInventory(pizzas);
+                 enough = store.EnoughInventory(pizzas);
 
                 if(!enough)
                 {
@@ -112,6 +117,8 @@ namespace PizzaProject.UI
                 else
                 {
                     Console.WriteLine("Let's make that pizza!!!!!");
+                    store.UseInventory();
+                    Console.WriteLine(store.ToString());
                 }
               
             } while(!enough);
@@ -144,8 +151,6 @@ namespace PizzaProject.UI
             
         }
         
-        
-
         public static string ValidateCrustSize(int i)
         {
             Console.Write($"For pizza #{i}, What size pizza crust do you want? (small, medium, or large): ");
