@@ -7,11 +7,13 @@ namespace PizzaProject.Data
     {
         public Pizzas()
         {
+            Orders = new HashSet<Orders>();
             PizzaToppings = new HashSet<PizzaToppings>();
         }
 
         public int PizzasId { get; set; }
 
+        public ICollection<Orders> Orders { get; set; }
         public ICollection<PizzaToppings> PizzaToppings { get; set; }
     }
 }

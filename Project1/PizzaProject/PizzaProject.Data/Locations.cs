@@ -3,15 +3,16 @@ using System.Collections.Generic;
 
 namespace PizzaProject.Data
 {
-    public partial class Toppings
+    public partial class Locations
     {
-        public Toppings()
+        public Locations()
         {
             Orders = new HashSet<Orders>();
-            PizzaToppings = new HashSet<PizzaToppings>();
         }
 
-        public int ToppingsId { get; set; }
+        public int LocationsId { get; set; }
+        public int UsersId { get; set; }
+        public int OrdersId { get; set; }
         public int Small { get; set; }
         public int Medium { get; set; }
         public int Large { get; set; }
@@ -20,7 +21,7 @@ namespace PizzaProject.Data
         public int Pepperoni { get; set; }
         public int Sausage { get; set; }
 
+        public Users Users { get; set; }
         public ICollection<Orders> Orders { get; set; }
-        public ICollection<PizzaToppings> PizzaToppings { get; set; }
     }
 }

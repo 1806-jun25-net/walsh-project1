@@ -15,9 +15,12 @@ namespace PizzaProject.Data
         {
         }
 
+        public virtual DbSet<Locations> Locations { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Pizzas> Pizzas { get; set; }
         public virtual DbSet<PizzaToppings> PizzaToppings { get; set; }
         public virtual DbSet<Toppings> Toppings { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -30,6 +33,64 @@ namespace PizzaProject.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Locations>(entity =>
+            {
+                entity.ToTable("Locations", "Pizzas");
+
+                entity.Property(e => e.LocationsId).HasColumnName("LocationsID");
+
+                entity.Property(e => e.OrdersId).HasColumnName("OrdersID");
+
+                entity.Property(e => e.UsersId).HasColumnName("UsersID");
+
+                entity.HasOne(d => d.Users)
+                    .WithMany(p => p.Locations)
+                    .HasForeignKey(d => d.UsersId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_UsersID");
+            });
+
+            modelBuilder.Entity<Orders>(entity =>
+            {
+                entity.ToTable("Orders", "Pizzas");
+
+                entity.Property(e => e.OrdersId).HasColumnName("OrdersID");
+
+                entity.Property(e => e.LocationsId).HasColumnName("LocationsID");
+
+                entity.Property(e => e.OrderTime).HasColumnType("datetime");
+
+                entity.Property(e => e.PizzasId).HasColumnName("PizzasID");
+
+                entity.Property(e => e.ToppingsId).HasColumnName("ToppingsID");
+
+                entity.Property(e => e.UsersId).HasColumnName("UsersID");
+
+                entity.HasOne(d => d.Locations)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.LocationsId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_LocationsID");
+
+                entity.HasOne(d => d.Pizzas)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.PizzasId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PizzasID");
+
+                entity.HasOne(d => d.Toppings)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.ToppingsId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ToppingsID");
+
+                entity.HasOne(d => d.Users)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.UsersId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Orders_UsersID");
+            });
+
             modelBuilder.Entity<Pizzas>(entity =>
             {
                 entity.ToTable("Pizzas", "Pizzas");
@@ -65,6 +126,27 @@ namespace PizzaProject.Data
                 entity.ToTable("Toppings", "Pizzas");
 
                 entity.Property(e => e.ToppingsId).HasColumnName("ToppingsID");
+            });
+
+            modelBuilder.Entity<Users>(entity =>
+            {
+                entity.ToTable("Users", "Pizzas");
+
+                entity.Property(e => e.UsersId).HasColumnName("UsersID");
+
+                entity.Property(e => e.FirstName)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.LastName)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.LocationId).HasColumnName("LocationID");
+
+                entity.Property(e => e.Phone)
+                    .IsRequired()
+                    .HasMaxLength(100);
             });
         }
     }
