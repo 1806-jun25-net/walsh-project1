@@ -43,6 +43,12 @@ namespace PizzaProject.Data
 
                 entity.Property(e => e.UsersId).HasColumnName("UsersID");
 
+                entity.HasOne(d => d.Orders)
+                    .WithMany(p => p.Locations)
+                    .HasForeignKey(d => d.OrdersId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("PK_Locations_OrdersID");
+
                 entity.HasOne(d => d.Users)
                     .WithMany(p => p.Locations)
                     .HasForeignKey(d => d.UsersId)
@@ -66,8 +72,8 @@ namespace PizzaProject.Data
 
                 entity.Property(e => e.UsersId).HasColumnName("UsersID");
 
-                entity.HasOne(d => d.Locations)
-                    .WithMany(p => p.Orders)
+                entity.HasOne(d => d.LocationsNavigation)
+                    .WithMany(p => p.OrdersNavigation)
                     .HasForeignKey(d => d.LocationsId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_LocationsID");
@@ -142,11 +148,17 @@ namespace PizzaProject.Data
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.Property(e => e.LocationId).HasColumnName("LocationID");
+                entity.Property(e => e.LocationsId).HasColumnName("LocationsID");
 
                 entity.Property(e => e.Phone)
                     .IsRequired()
                     .HasMaxLength(100);
+
+                entity.HasOne(d => d.LocationsNavigation)
+                    .WithMany(p => p.UsersNavigation)
+                    .HasForeignKey(d => d.LocationsId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("PK_Users_Locations");
             });
         }
     }

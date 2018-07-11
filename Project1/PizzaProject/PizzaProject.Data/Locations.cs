@@ -7,7 +7,8 @@ namespace PizzaProject.Data
     {
         public Locations()
         {
-            Orders = new HashSet<Orders>();
+            OrdersNavigation = new HashSet<Orders>();
+            UsersNavigation = new HashSet<Users>();
         }
 
         public int LocationsId { get; set; }
@@ -21,7 +22,9 @@ namespace PizzaProject.Data
         public int Pepperoni { get; set; }
         public int Sausage { get; set; }
 
+        public Orders Orders { get; set; }
         public Users Users { get; set; }
-        public ICollection<Orders> Orders { get; set; }
+        public ICollection<Orders> OrdersNavigation { get; set; }
+        public ICollection<Users> UsersNavigation { get; set; }
     }
 }

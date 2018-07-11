@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaProject.Library", "Piz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaProject.Test", "XUnitTestProject1\PizzaProject.Test.csproj", "{AB856EF8-6104-453D-9BB5-2BC9413581D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaProject.Data", "PizzaProject.Data\PizzaProject.Data.csproj", "{89E07A2F-3B0F-4ED0-BD9F-E4E43EAD6F5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaProject.Data", "PizzaProject.Data\PizzaProject.Data.csproj", "{89E07A2F-3B0F-4ED0-BD9F-E4E43EAD6F5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

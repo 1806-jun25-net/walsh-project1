@@ -10,9 +10,9 @@ namespace XUnitTestProject1
     {
        
         
-        // Test all fields return valid strings 
+        // Test all fields return valid strings C:\Revature\Project1\PizzaProject\XUnitTestProject1\UserTest.cs
         [Fact]
-        public void CustomerInfoWithFirstLastPhoneStreetCityStateZip( )
+        public void CustomerInfoWithFirstLastPhone( )
         {
             // arrange 
             string name1 = "Davy";

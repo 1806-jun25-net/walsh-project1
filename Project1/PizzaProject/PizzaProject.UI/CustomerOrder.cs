@@ -118,7 +118,7 @@ namespace PizzaProject.UI
                 {
                     Console.WriteLine("Let's make that pizza!!!!!");
                     store.UseInventory();
-                    Console.WriteLine(store.ToString());
+                    Console.WriteLine(store.ToString());        // show inventory
                 }
               
             } while(!enough);
@@ -157,7 +157,6 @@ namespace PizzaProject.UI
             var size = Console.ReadLine();
             size = size.ToLower();
             
-
             while (size != "small" && size != "medium" && size != "large")
             {
                 Console.WriteLine("You did not enter small medium or large...");
