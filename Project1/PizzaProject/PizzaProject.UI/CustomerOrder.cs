@@ -1,8 +1,12 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using PizzaProject.Library;
+using PizzaProject.Library.Database;
 using PizzaProject.Library.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -44,8 +48,23 @@ namespace PizzaProject.UI
             Console.Write("What location do you want? Choose location 1 or 2: Enter an integer:  ");
             var locationNumber = ValidateStoreLocation();
 
-            // write to database user info
-            // var repo = new PizzaRepo(new PizzaDBContext(OptionsBuilder.Options));
+            // write to database user info-----------------------------------------------------------------------------------
+            // get the configuration from file
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+            IConfigurationRoot configuration = builder.Build();
+
+            // provide the connection string to the dbcontext
+            var optionsBuilder = new DbContextOptionsBuilder<PizzaDBContext>();
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("PizzaDB"));
+
+            var repo = new PizzaRepo(new PizzaDBContext(optionsBuilder.Options));
+
+             repo.AddUser(firstName, lastName, phoneNumber);
+
+           
             // from location set defualt for customer and send user information to correct location
             // convert integer choice to string
             var location = locationNumber.ToString();

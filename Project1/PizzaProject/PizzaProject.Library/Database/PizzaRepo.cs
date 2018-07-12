@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PizzaProject.Library.Database
 {
-    class PizzaRepo
+    public class PizzaRepo
     {
         private readonly PizzaDBContext _db;
 

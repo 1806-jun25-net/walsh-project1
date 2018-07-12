@@ -1,4 +1,5 @@
 ﻿
+using PizzaProject.Library.Database;
 using PizzaProject.Library;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,18 +14,7 @@ namespace PizzaProject.UI
         {
 
             
-            // get the configuration from file
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-
-            IConfigurationRoot configuration = builder.Build();
-
-            // provide the connection string to the dbcontext
-            var optionsBuilder = new DbContextOptionsBuilder<PizzaDBContext>();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("PizzaDB"));
-            
-
+           
 
             int input;      // stores user menu choice 
 
