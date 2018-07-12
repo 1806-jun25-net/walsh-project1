@@ -11,6 +11,8 @@ namespace PizzaProject.UI
     {
         static void Main( string[ ] args )
         {
+
+            
             // get the configuration from file
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -18,10 +20,11 @@ namespace PizzaProject.UI
 
             IConfigurationRoot configuration = builder.Build();
 
-            /*provide the connection string to the dbcontext
+            // provide the connection string to the dbcontext
             var optionsBuilder = new DbContextOptionsBuilder<PizzaDBContext>();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("MoviesDB"));
-            */
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("PizzaDB"));
+            
+
 
             int input;      // stores user menu choice 
 

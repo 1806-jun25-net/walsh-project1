@@ -1,4 +1,6 @@
-﻿using PizzaProject.Library.Models;
+﻿using Microsoft.Extensions.Options;
+using PizzaProject.Library;
+using PizzaProject.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -42,6 +44,8 @@ namespace PizzaProject.UI
             Console.Write("What location do you want? Choose location 1 or 2: Enter an integer:  ");
             var locationNumber = ValidateStoreLocation();
 
+            // write to database user info
+            // var repo = new PizzaRepo(new PizzaDBContext(OptionsBuilder.Options));
             // from location set defualt for customer and send user information to correct location
             // convert integer choice to string
             var location = locationNumber.ToString();

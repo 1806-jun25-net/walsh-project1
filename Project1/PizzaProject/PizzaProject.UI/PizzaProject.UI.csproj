@@ -19,4 +19,10 @@
     <ProjectReference Include="..\PizzaProject.Library\PizzaProject.Library.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
