@@ -4,8 +4,9 @@ public class User
     public string FirstName { set; get; }
     public string LastName { set; get; }
     public string PhoneNumber { set; get; }
+    public string DefaultLocation { set; get;  }
+    public int UserID { set; get;  }
 
-    public string DefaultLocation { set; get; }
     public static bool AlreadyOrdered { set; get; } = false;
     
     // default empty constructer
@@ -15,21 +16,19 @@ public class User
     }
 
     // enter user first name last name and phone number
-    public User( string firstName, string lastName, string phoneNumber)
-    {
-        FirstName = firstName;
-        LastName = lastName;
-        PhoneNumber = phoneNumber;
-    }
-
-    // enter user first name last name phone number and default location 
-    public User( string firstName, string lastName, string phoneNumber, string location )
+    public User( string firstName, string lastName, string phoneNumber, string location)
     {
         FirstName = firstName;
         LastName = lastName;
         PhoneNumber = phoneNumber;
         DefaultLocation = location;
+    }
 
+    public User( string firstName, string lastName, string phone)
+    {
+        FirstName = firstName;
+        LastName = lastName;
+        PhoneNumber = phone;
     }
 
     /* set order time
