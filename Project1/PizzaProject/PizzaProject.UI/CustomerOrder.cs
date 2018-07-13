@@ -44,10 +44,11 @@ namespace PizzaProject.UI
             Console.Write("What is your phone number:  ");
             var phoneNumber = ValidatePhoneNUmber();
             
+            
             Console.Write("What location do you want? Choose location 1 or 2: Enter an integer:  ");
             var locationNumber = ValidateStoreLocation();
-
-            /*
+            
+            
             // write to database user info-----------------------------------------------------------------------------------
             // get the configuration from file
             var builder = new ConfigurationBuilder()
@@ -57,14 +58,11 @@ namespace PizzaProject.UI
             IConfigurationRoot configuration = builder.Build();
 
             // provide the connection string to the dbcontext
-            var optionsBuilder = new DbContextOptionsBuilder<PizzaDBContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<PizzaPizzaDBContext>();
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("PizzaPizzaDB"));
 
-            var repo = new PizzaRepo(new PizzaDBContext(optionsBuilder.Options));
-
-            */
-
-           
+            var repo = new PizzaRepo(new PizzaPizzaDBContext(optionsBuilder.Options));
+            
             // from location set defualt for customer and send user information to correct location
             // convert integer choice to string
             var location = locationNumber.ToString();
@@ -76,6 +74,10 @@ namespace PizzaProject.UI
             Console.WriteLine(pizzaStore.ToString());
 
             User customer = new User(firstName, lastName, phoneNumber);
+
+            // try to add user to database            
+            repo.AddUser(customer);
+
             customer.DefaultLocation = pizzaStore.LocationName;     // set defualt location to location name
 
             GetPizzaInfo(pizzaStore, customer);
