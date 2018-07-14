@@ -58,10 +58,10 @@ namespace PizzaProject.UI
             IConfigurationRoot configuration = builder.Build();
 
             // provide the connection string to the dbcontext
-            var optionsBuilder = new DbContextOptionsBuilder<PizzaPizzaDBContext>();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("PizzaPizzaDB"));
+            var optionsBuilder = new DbContextOptionsBuilder<PizzaDBContext>();
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("PizzaDB"));
 
-            var repo = new PizzaRepo(new PizzaPizzaDBContext(optionsBuilder.Options));
+            var repo = new PizzaRepo(new PizzaDBContext(optionsBuilder.Options));
             
             // from location set defualt for customer and send user information to correct location
             // convert integer choice to string

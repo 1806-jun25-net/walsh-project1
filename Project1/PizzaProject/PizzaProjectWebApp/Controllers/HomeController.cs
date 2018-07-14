@@ -29,7 +29,12 @@ namespace PizzaProjectWebApp.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Locations( )
+        {
+            return View();
+        }
+
+        public IActionResult PizzaItems( )
         {
             return View();
         }

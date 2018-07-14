@@ -6,9 +6,9 @@ namespace PizzaProject.Library
 {
     public class PizzaRepo
     {
-        private readonly PizzaPizzaDBContext _db;
+        private readonly PizzaDBContext _db;
 
-        public PizzaRepo( PizzaPizzaDBContext db )
+        public PizzaRepo( PizzaDBContext db )
         {
             _db = db ?? throw new ArgumentNullException(nameof(db));
         }
