@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PizzaProjectWebApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,21 +13,7 @@ namespace PizzaProject.Library
             FirstName = user.FirstName,
             LastName = user.LastName,
             Phone = user.PhoneNumber,
-            LocationsId= user.DefaultLocation
-        };
-
-        public static Orders Map( Orders order ) => new Orders
-        {
-
-
-        };
-
-        public static Pizzas Map( Pizzas pizza ) => new Pizzas
-        {
-            
-
+            LocationsId= int.Parse(user.DefaultLocation),
         };
     }
-
-  
 }

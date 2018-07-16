@@ -4,7 +4,7 @@ public class User
     public string FirstName { set; get; }
     public string LastName { set; get; }
     public string PhoneNumber { set; get; }
-    public string DefaultLocation { set; get;  }
+    public int DefaultLocation { set; get;  }
     public int UserID { set; get;  }
 
     public static bool AlreadyOrdered { set; get; } = false;
@@ -16,7 +16,7 @@ public class User
     }
 
     // enter user first name last name and phone number
-    public User( string firstName, string lastName, string phoneNumber, string location)
+    public User( string firstName, string lastName, string phoneNumber, int location)
     {
         FirstName = firstName;
         LastName = lastName;

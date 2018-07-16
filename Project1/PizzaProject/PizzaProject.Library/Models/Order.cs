@@ -13,7 +13,7 @@ namespace PizzaProject.Library.Models
 
         public Order( )
         {
-
+            
         }
 
         public Order(Location store, User person, DateTime time, List<Pizza> orders)

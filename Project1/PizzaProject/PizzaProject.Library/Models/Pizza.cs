@@ -49,6 +49,8 @@ namespace PizzaProject.Library.Models
             }
 
             Cost = total;
+
+           
         }
     }
 }

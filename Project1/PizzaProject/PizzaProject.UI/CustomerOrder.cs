@@ -62,23 +62,16 @@ namespace PizzaProject.UI
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("PizzaDB"));
 
             var repo = new PizzaRepo(new PizzaDBContext(optionsBuilder.Options));
-            
-            // from location set defualt for customer and send user information to correct location
-            // convert integer choice to string
-            var location = locationNumber.ToString();
 
-            var locationName = $"Location {location}";
-            Location pizzaStore = new Location(locationName, 2);
+            Location pizzaStore = new Location(locationNumber, 2);
 
             // test inventory
             Console.WriteLine(pizzaStore.ToString());
 
-            User customer = new User(firstName, lastName, phoneNumber);
+            User customer = new User(firstName, lastName, phoneNumber, locationNumber);
 
-            // try to add user to database            
+            // try to add user to database works 
             repo.AddUser(customer);
-
-            customer.DefaultLocation = pizzaStore.LocationName;     // set defualt location to location name
 
             GetPizzaInfo(pizzaStore, customer);
         }
@@ -125,6 +118,8 @@ namespace PizzaProject.UI
 
                     // create pizza object and add to list of pizzas for order
                     Pizza pizza = new Pizza(size, toppings);
+
+                    // write pizza here 
                     pizzas.Add(pizza);
 
                 }

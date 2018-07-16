@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PizzaProjectWebApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -24,11 +25,10 @@ namespace PizzaProject.Library
             _db.SaveChanges();
         }
 
-        
         /*
         public void AddUser( string first, string second, string phone )
         {
-C:\Revature\walsh-project1\Project1\PizzaProject\PizzaProject.Library\PizzaRepo.cs
+
             var dbUserTest = new Users
             {
                 FirstName = first,

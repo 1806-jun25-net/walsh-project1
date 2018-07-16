@@ -7,7 +7,7 @@ using System.Collections.Generic;
 // when orders are accepted. 
 public class Location
 {
-    public string LocationName { get; set; }
+    public int LocationName { get; set; }
 
     /* Inventory:
      * Ingredients: Pepperoni, Cheese, Sauce, Sausage
@@ -34,9 +34,9 @@ public class Location
     public static List<Order> OrderHistory { get; set; }
     
     // sets location name and inventory amount
-    public Location(string name, int size)
+    public Location(int name, int size)
     {
-        if (name == "Location 1")
+        if (name == 1)
         {
             LocationName = name;
             Pepperoni = size * 10;
@@ -48,7 +48,7 @@ public class Location
             LargeCrust = size;
         }
 
-        if (name == "Location 2")
+        if (name == 2)
         {
             LocationName = name;
             Pepperoni = (size * 10) / 2;
