@@ -112,26 +112,20 @@ public class Location
     // ingredients it will take to make that pizza
     public void CountPizzaIngredients(Pizza pizza)
     {
-        // count crust
-        if (pizza.CrustSize == "small")
-            smallCrust++;
-        else if (pizza.CrustSize == "medium")
+        if(pizza.Small== 1)
+            smallCrust ++;
+        if(pizza.Medium == 1)
             mediumCrust++;
-        else
+        if(pizza.Large == 1)
             largeCrust++;
-
-        // count ingredients
-        foreach(string topping in pizza.ToppingsList)
-        {
-            if(topping == "pepperoni")
-                pepperoni++;
-            else if(topping == "cheese")
-                cheese++;
-            else if(topping == "sauce")
-                sauce++;
-            else
-                sausage++;
-        }
+        if(pizza.Cheese == 1)
+            cheese++;
+        if(pizza.Sauce == 1)
+            sauce++;
+        if(pizza.Pepperoni == 1)
+            pepperoni++;
+        if(pizza.Sausage == 1)
+            sausage++;
     }
 
     /* Inventory:

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PizzaProject.Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,9 +14,9 @@ namespace PizzaProject.Library
             _db = db ?? throw new ArgumentNullException(nameof(db));
         }
 
-        public void AddUser( User user )
+        public void AddPizza( Pizza pizza )
         {
-            _db.Add(Mapper.Map(user));
+            _db.Add(Mapper.Map(pizza));
             _db.SaveChanges();
         }
 
@@ -24,11 +25,10 @@ namespace PizzaProject.Library
             _db.SaveChanges();
         }
 
-        
         /*
         public void AddUser( string first, string second, string phone )
         {
-C:\Revature\walsh-project1\Project1\PizzaProject\PizzaProject.Library\PizzaRepo.cs
+
             var dbUserTest = new Users
             {
                 FirstName = first,

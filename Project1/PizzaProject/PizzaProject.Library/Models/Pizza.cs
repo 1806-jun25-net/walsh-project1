@@ -12,9 +12,30 @@ namespace PizzaProject.Library.Models
          * Crust: Small, Medium Large
          */
         public List<string> ToppingsList { get; set; }
-        public double Cost { get; set; }
+        public int Cost { get; set; }
         public string CrustSize { get; set; }
 
+        // different implementation 
+        public int Small { get; set; }
+        public int Medium { get; set; }
+        public int Large { get; set;  }
+        public int Cheese { get; set; }
+        public int Sauce { get; set; }
+        public int Pepperoni { get; set; }
+        public int Sausage { get; set; }
+
+        // empty constructor
+        public Pizza()
+        {
+            Small = 0;
+            Medium = 0;
+            Large = 0;
+            Cheese = 0;
+            Sauce = 0;
+            Pepperoni = 0;
+            Sausage = 0;
+
+        }
         // set toppings and crust
         public Pizza( string crust, List<string> tops )
         {
@@ -30,28 +51,25 @@ namespace PizzaProject.Library.Models
             int total = 0;
 
             // cost from crust
-            if(CrustSize == "small")
+            if(Small == 1)
                 total += 6;
-            else if(CrustSize == "medium")
+            else if(Medium == 1)
                 total += 8;
             // large
             else
                 total += 10;
 
-            // cost from toppings. Sauce and cheese do not add more to the price
-            foreach(string item in ToppingsList)
-            {
-                if(item == "Pepperoni")
-                    total += 1;
+            if(Pepperoni == 1)
+                total += 1;
 
-                if(item == "Sausage")
-                    total += 1;
-            }
+            if(Sausage == 1)
+                total += 1;
 
             Cost = total;
-
-           
         }
+
+       
+
     }
 }
   

@@ -48,30 +48,12 @@ namespace PizzaProject.UI
             Console.Write("What location do you want? Choose location 1 or 2: Enter an integer:  ");
             var locationNumber = ValidateStoreLocation();
             
-            
-            // write to database user info-----------------------------------------------------------------------------------
-            // get the configuration from file
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-
-            IConfigurationRoot configuration = builder.Build();
-
-            // provide the connection string to the dbcontext
-            var optionsBuilder = new DbContextOptionsBuilder<PizzaDBContext>();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("PizzaDB"));
-
-            var repo = new PizzaRepo(new PizzaDBContext(optionsBuilder.Options));
-
             Location pizzaStore = new Location(locationNumber, 2);
 
             // test inventory
             Console.WriteLine(pizzaStore.ToString());
 
             User customer = new User(firstName, lastName, phoneNumber, locationNumber);
-
-            // try to add user to database works 
-            repo.AddUser(customer);
 
             GetPizzaInfo(pizzaStore, customer);
         }
@@ -80,8 +62,23 @@ namespace PizzaProject.UI
         // If location doesn't have enough inventory, method will loop asking customer for a new smaller order. 
         public static void GetPizzaInfo( Location store, User customer)
         {
-            bool enough;        // does location have enough inventory
 
+            // get the configuration from file
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+            IConfigurationRoot configuration = builder.Build();
+
+            var optionsBuilder = new DbContextOptionsBuilder<PizzaDBContext>();
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("PizzaDB"));
+
+            var repo = new PizzaRepo(new PizzaDBContext(optionsBuilder.Options));
+
+            bool enough;        // does location have enough inventory
+                                // create an empty pizza object with default values
+            Pizza pie = new Pizza();
+            
             // make a list of pizzas 
             List<Pizza> pizzas = new List<Pizza>();
 
@@ -92,8 +89,19 @@ namespace PizzaProject.UI
 
                 for(int i = 1; i <= number; i++)
                 {
-                    // Get pizza crust size
+
+                   
+
+                    // Get pizza crust size and set pizza object
                     var size = ValidateCrustSize(i);
+
+                    if(size == "small")
+                        pie.Small = 1;
+                    else if(size == "medium")
+                        pie.Medium = 1;
+                    else
+                        pie.Large = 1;
+
                     Console.WriteLine();            // skip line
 
                     // store toppings. all pizzas have sauce and cheese
@@ -102,25 +110,29 @@ namespace PizzaProject.UI
                     // Get toppings. Add pepperoni and sausage to toppings list if user requests
                     Console.WriteLine($"For pizza #{i} Tell me which toppings you would like.");
                     Console.WriteLine("Our toppings include Pepperoni, Sauce, Cheese and Sausage.");
+
+                    // set sauce and cheese
+                    pie.Sauce = 1;
+                    pie.Cheese = 1;
                     Console.WriteLine("All pizzas come with sauce and cheese. Would you like to add pepperoni? (Y or N) ");
 
                     var input = Menu.ValidateStringInput();     // validate "y" or "n" input 
                     if(input == "y")
-                        toppings.Add("pepperoni");
+                        pie.Pepperoni = 1;      // add pepperoni 
 
 
                     Console.WriteLine("Would you like to add sausage? ( Y or N) ");
                     input = Menu.ValidateStringInput();
                     if(input == "y")
-                        toppings.Add("sausage");
+                        pie.Sausage = 1;
 
                     Console.WriteLine();        // skip a line
 
-                    // create pizza object and add to list of pizzas for order
-                    Pizza pizza = new Pizza(size, toppings);
-
-                    // write pizza here 
-                    pizzas.Add(pizza);
+                    // calculate pizza cost 
+                    pie.CalculateCost();
+                    Console.WriteLine(pie.Cost);
+                    // add pizzas to list 
+                    pizzas.Add(pie);
 
                 }
                
@@ -137,6 +149,12 @@ namespace PizzaProject.UI
                 else
                 {
                     Console.WriteLine("Let's make that pizza!!!!!");
+
+                    // write pizza here 
+
+                    // provide the connection string to the dbcontext
+
+                    repo.AddPizza(pie);
                     store.UseInventory();
                     Console.WriteLine(store.ToString());        // show inventory
                 }
@@ -187,7 +205,7 @@ namespace PizzaProject.UI
 
             }
 
-            return size; 
+            return size;
         }
 
         public static int ValidateNumberOfPizzas()
